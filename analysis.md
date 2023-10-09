@@ -2,6 +2,8 @@
 - name
 - image
 - images
+    name
+    images
 - flag
 - review :
     image
@@ -9,14 +11,15 @@
     date
     rate
     review
-    price
 
+- price
 - sku
 - brand :
     name
     image
     products count
     reivews count
+
 - subtitle
 - tags
 - descriptions
