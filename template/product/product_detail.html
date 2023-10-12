@@ -13,11 +13,7 @@
         <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
             <div class="container">
                 <h2>product simple</h2>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="shop-4column.html">shop-4column</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">product-simple</li>
-                </ol>
+               
             </div>
         </section>
         <!--=====================================
@@ -38,18 +34,15 @@
                                 <label class="details-label off">-10%</label>
                             </div>
                             <ul class="details-preview"> 
+                                {% for image in object.image.all%}
                                 <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
+                                {% endfor %}
                             </ul>
                             <ul class="details-thumb">
+                                {% for image in object.image.all%}
                                 <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
+                                {% endfor %}
+                          
                             </ul>
                         </div>
                     </div>
@@ -77,10 +70,10 @@
                             </li>
                         </ul>
                         <div class="details-content">
-                            <h3 class="details-name"><a href="#">existing product name</a></h3>
+                            <h3 class="details-name"><a href="#">{{object.name}}</a></h3>
                             <div class="details-meta">
-                                <p>SKU:<span>1234567</span></p>
-                                <p>BRAND:<a href="#">radhuni</a></p>
+                                <p>SKU:<span>{{object.sku}}</span></p>
+                                <p>BRAND:<a href="#">{{object.brand}}</a></p>
                             </div>
                             <div class="details-rating">
                                 <i class="active icofont-star"></i>
@@ -91,16 +84,15 @@
                                 <a href="#">(3 reviews)</a>
                             </div>
                             <h3 class="details-price">
-                                <del>$38.00</del>
-                                <span>$24.00<small>/per kilo</small></span>
+                                <span>${{object.price}}</span>
                             </h3>
-                            <p class="details-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores quibusdam.</p>
+                            <p class="details-desc">{{object.descriptions}}</p>
                             <div class="details-list-group">
                                 <label class="details-list-title">tags:</label>
                                 <ul class="details-tag-list">
-                                    <li><a href="#">organic</a></li>
-                                    <li><a href="#">fruits</a></li>
-                                    <li><a href="#">chilis</a></li>
+                                    {% for tage in object.tags.all %}
+                                        <li><a href="#">tage</a></li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                             <div class="details-list-group">
