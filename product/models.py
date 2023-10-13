@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
 FLAG_TYPES = (
@@ -18,13 +19,19 @@ class Product(models.Model):
     price = models.FloatField(_("Price"))
     sku = models.CharField(_("Sku"), max_length=50)
     subtitle = models.CharField(_("Subtitle"), max_length=300)
-    tag = TaggableManager()
+    tag = TaggableManager(_("Tag"))
     descriptions = models.TextField(_("Descriptions"), max_length=40000)
     quantity = models.IntegerField(_("Quantity"))
     brand = models.ForeignKey("Brand", verbose_name=('Brand'), related_name='product_brand', on_delete=models.SET_NULL, null=True)
-    
+    slug = models.SlugField(_("Slug"), null=True, blank=True)
+
     def __str__(self) -> str:
             return self.name
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Product, self).save(*args, **kwargs)
+    
 
 class ProductImages(models.Model):
     products = models.ForeignKey(Product, related_name='product_image', verbose_name=_("Product"), on_delete=models.CASCADE)
@@ -37,15 +44,20 @@ class ProductImages(models.Model):
 class Brand(models.Model):
     name = models.CharField(_("Name"), max_length=50)
     image = models.ImageField(_("Images"), upload_to='brand')
-    # products = models.ForeignKey(Product, verbose_name=_("Product"), on_delete=models.SET_NULL, null=True)
+    slug = models.SlugField(_("Slug"), null=True, blank=True)
+
 
     def __str__(self) -> str:
             return self.name
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Brand, self).save(*args, **kwargs)
+    
 
 class Review(models.Model):
     user = models.ForeignKey(User, verbose_name=('User'), related_name=_("rebiew_user"), on_delete=models.SET_NULL, null=True)
-    product = models.ForeignKey(Product, verbose_name=_("Product"), on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, related_name='review_product', verbose_name=_("Product"), on_delete=models.SET_NULL, null=True)
     rate = models.IntegerField(_("Rate"))
     review = models.CharField(_("Review"), max_length=300)
     create_at = models.DateTimeField(_("Create at"), default=timezone.now)
