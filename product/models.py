@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from django.utils import timezone
-# from tagget.managers import TaggableManager
+from taggit.managers import TaggableManager
 
 FLAG_TYPES = (
     ('Sale','Sale'),
@@ -18,7 +18,7 @@ class Product(models.Model):
     price = models.FloatField(_("Price"))
     sku = models.CharField(_("Sku"), max_length=50)
     subtitle = models.CharField(_("Subtitle"), max_length=300)
-    # tage = TaggableManager()
+    tag = TaggableManager()
     descriptions = models.TextField(_("Descriptions"), max_length=40000)
     quantity = models.IntegerField(_("Quantity"))
     brand = models.ForeignKey("Brand", verbose_name=('Brand'), related_name='product_brand', on_delete=models.SET_NULL, null=True)
@@ -27,7 +27,7 @@ class Product(models.Model):
             return self.name
 
 class ProductImages(models.Model):
-    products = models.ForeignKey(Product, verbose_name=_("Product"), related_name='product_image', on_delete=models.CASCADE)
+    products = models.ForeignKey(Product, related_name='product_image', verbose_name=_("Product"), on_delete=models.CASCADE)
     image = models.ImageField(_("Image"), upload_to='product_images')
 
     def __str__(self) -> str:
