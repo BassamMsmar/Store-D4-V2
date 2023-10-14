@@ -24,8 +24,8 @@
                   BRAND SINGLE PART START
         =======================================-->
         <div class="brand-single">
-            <a href="#"><img src="{{ object.image.url }}" alt="brand"></a>
-            <a href="#"><h3>{{ object }}</h3></a>
+            <a href="#"><img src="{{ brand.image.url }}" alt="brand"></a>
+            <a href="#"><h3>{{ brand }}</h3></a>
             <ul>
                 <li class="fas fa-star active"></li>
                 <li class="fas fa-star active"></li>
@@ -71,12 +71,12 @@
                 </div>
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-5">
                     
-                    {% for item in product_list%}
+                    {% for item in object_list%}
                     <div class="col">
                         <div class="product-card">
                             <div class="product-media">
                                 <div class="product-label">
-                                    <label class="label-text new">new</label>
+                                    <label class="label-text new">{{item.flag}}</label>
                                 </div>
                                 <button class="product-wish wish">
                                     <i class="fas fa-heart"></i>
