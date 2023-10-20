@@ -12,14 +12,21 @@ class ProductImagesTabular(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'brand', 'subtitle', 'flag']
     list_filter = ['name', 'brand', 'subtitle', 'flag']
-    search_fields = ['name', 'subtitle', 'flag', 'description']
+    search_fields = ['name', 'subtitle', 'flag', 'brand']
+    list_per_page = 500
     inlines = [ProductImagesTabular]
  
+
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    list_filter = ['name']
+    search_fields = ['name']
+    list_per_page = 20 
 
 
 
 
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Brand)
+admin.site.register(Brand, BrandAdmin)
 admin.site.register(ProductImages)
 admin.site.register(Review)

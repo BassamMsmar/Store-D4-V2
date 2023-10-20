@@ -24,6 +24,7 @@ class Product(models.Model):
     quantity = models.IntegerField(_("Quantity"))
     brand = models.ForeignKey("Brand", verbose_name=('Brand'), related_name='product_brand', on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(_("Slug"), null=True, blank=True)
+    create_at = models.DateTimeField(_("Create at"), default=timezone.now, null=True, blank=True)
 
     def __str__(self) -> str:
             return self.name
