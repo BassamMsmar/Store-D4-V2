@@ -356,7 +356,7 @@
                             </div>
                         </div>
                         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">
-                            {% for object in object_list%}
+                            {% for object in product_list%}
                                 <div class="col">
                                     <div class="product-card">
                                         <div class="product-media">
@@ -382,7 +382,7 @@
                                                 <i class="active icofont-star"></i>
                                                 <i class="active icofont-star"></i>
                                                 <i class="icofont-star"></i>
-                                                <a href="#">(3)</a>
+                                                <a href="#">({{object.product_reviews}})</a>
                                             </div>
                                             <h6 class="product-name">
                                                 <a href="/product/{{object.slug}}">{{object}}</a>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug</title>
+    <style>
+        body {
+            background-color: #a0a089;
+        }
+
+        h1 {
+            color: #1c1c24;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <ul>
+            {% for product in products %}
+
+            <li>{{ product }} - {{ product.price }}</li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+
+</html>
