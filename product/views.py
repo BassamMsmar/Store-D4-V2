@@ -1,3 +1,5 @@
+from typing import Any
+from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.db.models import Count
@@ -17,6 +19,8 @@ class ProductList(ListView):
 
 class ProductDetail(DetailView):
     model =Product
+    queryset = Product.objects.annotate(product_reviews=Count('review_product'))
+
 
 
     def get_context_data(self, **kwargs):

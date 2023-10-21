@@ -26,12 +26,15 @@ class Product(models.Model):
     slug = models.SlugField(_("Slug"), null=True, blank=True)
     create_at = models.DateTimeField(_("Create at"), default=timezone.now, null=True, blank=True)
 
-    def __str__(self) -> str:
-            return self.name
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
+    
+    def __str__(self) -> str:
+            return self.name
+    
+
     
 
 class ProductImages(models.Model):
