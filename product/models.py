@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
+from django.db.models.aggregates import Avg
 
 FLAG_TYPES = (
     ('Sale','Sale'),
@@ -30,12 +31,16 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
+
+    def ave_rate(self):
+          avg = self.review_product.aggregate(rate_ave=Avg('rate'))
+          return avg['rate_ave']
     
     def __str__(self) -> str:
             return self.name
     
 
-    
+
 
 class ProductImages(models.Model):
     products = models.ForeignKey(Product, related_name='product_image', verbose_name=_("Product"), on_delete=models.CASCADE)
