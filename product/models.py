@@ -32,9 +32,9 @@ class Product(models.Model):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
 
-    def ave_rate(self):
-          avg = self.review_product.aggregate(rate_ave=Avg('rate'))
-          return avg['rate_ave']
+    # def ave_rate(self):
+    #       avg = self.review_product.aggregate(rate_ave=Avg('rate'))
+    #       return avg['rate_ave']
     
     def __str__(self) -> str:
             return self.name

@@ -3,6 +3,7 @@ from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.db.models import Count
+from django.db.models.aggregates import Avg
 
 from .models import Product, Brand, Review, ProductImages
 # Create your views here.
@@ -14,7 +15,11 @@ class ProductList(ListView):
     paginate_by = 20
 
 
-
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.annotate(ave_rate=Avg('review_product__rate'))
+        return queryset
+    
 
 
 class ProductDetail(DetailView):
