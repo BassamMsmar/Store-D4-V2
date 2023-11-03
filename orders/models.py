@@ -51,8 +51,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, related_name='order_user', on_delete=models.SET_NULL,null=True, blank=True)
     status = models.CharField(max_length=10, choices=ORDER_STATUS, default='Recieved')
     code = models.CharField(max_length=9, default=generate_code() )
-    order_time = models.DateTimeField(default=timezone.now)
-    delivery_time = models.DateTimeField(null=True, blank=True)
+    ime = models.DateTimeField(null=True, blank=True)
     coupon = models.ForeignKey('Coupon', related_name='order_coupon', on_delete=models.SET_NULL, null=True, blank=True)
     total_after_coupon = models.FloatField(null=True, blank=True )
 
