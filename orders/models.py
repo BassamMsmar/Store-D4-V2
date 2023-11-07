@@ -25,6 +25,12 @@ class Cart(models.Model):
         else:
             return f"Cart (No User)"
 
+    def cart_total(self):
+        total = 0
+        for item in self.cart_detail.all():
+            total += item.total
+        return total
+
 
 
 class CartDetail(models.Model):
@@ -39,6 +45,14 @@ class CartDetail(models.Model):
             return f"cart_detail {self.cart}"
         else:
             return f"Cart (No User)"
+        
+
+    def save(self, *args, **kwargs):
+        self.total = self.product.price * self.quantity
+        super(CartDetail, self).save(*args, **kwargs)
+
+
+ 
 
 
 ORDER_STATUS = {
@@ -51,12 +65,19 @@ class Order(models.Model):
     user = models.ForeignKey(User, related_name='order_user', on_delete=models.SET_NULL,null=True, blank=True)
     status = models.CharField(max_length=10, choices=ORDER_STATUS, default='Recieved')
     code = models.CharField(max_length=9, default=generate_code() )
-    ime = models.DateTimeField(null=True, blank=True)
+    order_time = models.DateTimeField(default=timezone.now)
+    delivery_time = models.DateTimeField(null=True, blank=True)
     coupon = models.ForeignKey('Coupon', related_name='order_coupon', on_delete=models.SET_NULL, null=True, blank=True)
     total_after_coupon = models.FloatField(null=True, blank=True )
 
     def __str__(self):
             return f'{self.user}'
+    
+    def order_total(self):
+        total = 0
+        for item in self.order_detail.all():
+            total += item.total
+        return total
 
 
 
@@ -69,6 +90,10 @@ class OrderDetail(models.Model):
 
     def __str__(self):
             return f'{self.order}'
+
+    def save(self, *args, **kwargs):
+        self.total = self.price * self.quantity
+        super(OrderDetail, self).save(*args, **kwargs)
     
 
 class Coupon(models.Model):

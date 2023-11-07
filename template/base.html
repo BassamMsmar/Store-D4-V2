@@ -387,7 +387,7 @@
                         <div class="cart-action-group">
                             <div class="product-action">
                                 <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{item.quantity}}">
                                 <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                             </div>
                             <h6>${{item.total}}</h6>
@@ -403,9 +403,9 @@
                 <input type="text" placeholder="Enter your coupon code">
                 <button type="submit"><span>apply</span></button>
             </form>
-            <a class="cart-checkout-btn" href="checkout.html">
+            <a class="cart-checkout-btn" href="/order/checkout">
                 <span class="checkout-label">Proceed to Checkout</span>
-                <span class="checkout-price">$369.78</span>
+                <span class="checkout-price">${{cart_data.cart_total}}</span>
             </a>
         </div>
     </aside>

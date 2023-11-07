@@ -54,6 +54,7 @@
                                         <th scope="col">Price</th>
                                         <th scope="col">brand</th>
                                         <th scope="col">quantity</th>
+                                        <th scope="col">total</th>
                                         <th scope="col">action</th>
                                     </tr>
                                 </thead>
@@ -75,6 +76,9 @@
                                         </td>
                                         <td class="table-quantity">
                                             <h6>{{item.quantity}}</h6>
+                                        </td>
+                                        <td class="table-quantity">
+                                            <h6>{{item.total}}</h6>
                                         </td>
                                         <td class="table-action">
                                             <a class="view" href="#" title="Quick View" data-bs-toggle="modal"
@@ -99,11 +103,11 @@
                             <ul>
                                 <li>
                                     <span>Sub total</span>
-                                    <span>$267.45</span>
+                                    <span>${{cart.cart_total}}</span>
                                 </li>
                                 <li>
                                     <span>delivery fee</span>
-                                    <span>$10.00</span>
+                                    <span>$00.00</span>
                                 </li>
                                 <li>
                                     <span>discount</span>
@@ -111,7 +115,7 @@
                                 </li>
                                 <li>
                                     <span>Total<small>(Incl. VAT)</small></span>
-                                    <span>$277.00</span>
+                                    <span>${{cart.cart_total}}</span>
                                 </li>
                             </ul>
                         </div>

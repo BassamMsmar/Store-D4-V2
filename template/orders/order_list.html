@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="orderlist-filter">
-                    <h5>total order <span>- (4)</span></h5>
+                    <h5>total order <span>- ({{object_list|length}})</span></h5>
                     <div class="filter-short">
                         <label class="form-label">short by:</label>
                         <select class="form-select">
@@ -88,7 +88,7 @@
                                     </li>
                                     <li>
                                         <h6>Total Item</h6>
-                                        <p>6 Items</p>
+                                        <p>{{object.order_detail|length}} Items</p>
                                     </li>
                                     <li>
                                         <h6>Order Time</h6>
@@ -140,7 +140,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+                                            {% for item in object.order_detail.all %}
                                             <tr>
                                                 <td class="table-serial">
                                                     <h6>01</h6>
@@ -160,6 +160,8 @@
                                                     <h6>3</h6>
                                                 </td>
                                             </tr>
+                                            {% endfor %}
+                                            
                                           
                                         </tbody>
                                     </table>

@@ -4,5 +4,5 @@ from .views import OrderList, checkout
 
 urlpatterns = [
     path('', OrderList.as_view() ),
-    path('checkout', checkout, name='checkout'),
+    path('checkout/', checkout, name='checkout'),
 ]
