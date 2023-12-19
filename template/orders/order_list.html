@@ -50,31 +50,31 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                {% for item in object_list %}
+                {% for object in object_list %}
                 <div class="orderlist">
                     <div class="orderlist-head">
                         <h5>order {{forloop.counter}}</h5>
-                        <h5>{{ item.status }}</h5>
+                        <h5>{{ object.status }}</h5>
                     </div>
                     <div class="orderlist-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="order-track">
                                     <ul class="order-track-list">
-                                        <li class="order-track-item{% if item.status == 'Recieved' or item.status == 'Processed' or item.status == 'Shipped' or item.status == 'Delivered'%} active {% endif %}">
+                                        <li class="order-track-item{% if object.status == 'Recieved' or object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered'%} active {% endif %}">
                                             <i class="icofont-check"></i>
                                             <span>order recieved</span>
                                         </li>
-                                        <li class="order-track-item {% if item.status == 'Processed' or item.status == 'Shipped' or item.status == 'Delivered'%} active {% endif %}">
-                                            <i class="icofont-{% if item.status == 'Processed' or item.status == 'Shipped' or item.status == 'Delivered'%}check{% else %}close{% endif %}"></i>
+                                        <li class="order-track-item {% if object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered'%} active {% endif %}">
+                                            <i class="icofont-{% if object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered'%}check{% else %}close{% endif %}"></i>
                                             <span>order processed</span>
                                         </li>
-                                        <li class="order-track-item{% if item.status == 'Shipped' or item.status == 'Delivered'%} active {% endif %}">
-                                            <i class="icofont-{% if  item.status == 'Shipped' or item.status == 'Delivered'%}check{% else %}close{% endif %}"></i>
+                                        <li class="order-track-item{% if object.status == 'Shipped' or object.status == 'Delivered'%} active {% endif %}">
+                                            <i class="icofont-{% if  object.status == 'Shipped' or object.status == 'Delivered'%}check{% else %}close{% endif %}"></i>
                                             <span>order shipped</span>
                                         </li>
-                                        <li class="order-track-item{% if item.status == 'Delivered'%} active {% endif %}">
-                                            <i class="icofont-{% if  item.status == 'Delivered'%}check{% else %}close{% endif %}"></i>
+                                        <li class="order-track-item{% if object.status == 'Delivered'%} active {% endif %}">
+                                            <i class="icofont-{% if  object.status == 'Delivered'%}check{% else %}close{% endif %}"></i>
                                             <span>order delivered</span>
                                         </li>
                                     </ul>
@@ -84,7 +84,7 @@
                                 <ul class="orderlist-details">
                                     <li>
                                         <h6>order id</h6>
-                                        <p>{{item.code}}</p>
+                                        <p>{{object.code}}</p>
                                     </li>
                                     <li>
                                         <h6>Total Item</h6>
@@ -92,11 +92,11 @@
                                     </li>
                                     <li>
                                         <h6>Order Time</h6>
-                                        <p>7th February 2021</p>
+                                        <p>{{object.order_time}}</p>
                                     </li>
                                     <li>
                                         <h6>Delivery Time</h6>
-                                        <p>12th February 2021</p>
+                                        <p>{{object.delivery_time}}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -104,7 +104,7 @@
                                 <ul class="orderlist-details">
                                     <li>
                                         <h6>Sub Total</h6>
-                                        <p>$10,864.00</p>
+                                        <p>${{object.order_total}}</p>
                                     </li>
                                     <li>
                                         <h6>discount</h6>
@@ -116,7 +116,7 @@
                                     </li>
                                     <li>
                                         <h6>Total<small>(Incl. VAT)</small></h6>
-                                        <p>$10,874.00</p>
+                                        <p>${{object.total_after_coupon}}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -137,27 +137,31 @@
                                                 <th scope="col">Price</th>
                                                 <th scope="col">brand</th>
                                                 <th scope="col">quantity</th>
+                                                <th scope="col">total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for item in object.order_detail.all %}
                                             <tr>
                                                 <td class="table-serial">
-                                                    <h6>01</h6>
+                                                    <h6>{{forloop.counter}}</h6>
                                                 </td>
-                                                <td class="table-image"><img src="images/product/01.jpg" alt="product">
+                                                <td class="table-image"><img src="{{item.product.image.url}}" alt="product">
                                                 </td>
                                                 <td class="table-name">
-                                                    <h6>product name</h6>
+                                                    <h6>{{item.product}}</h6>
                                                 </td>
                                                 <td class="table-price">
-                                                    <h6>$19<small>/kilo</small></h6>
+                                                    <h6>${{item.price}}<small>/kilo</small></h6>
                                                 </td>
                                                 <td class="table-brand">
-                                                    <h6>Fresh Company</h6>
+                                                    <h6>{{item.product.brand}}</h6>
                                                 </td>
                                                 <td class="table-quantity">
-                                                    <h6>3</h6>
+                                                    <h6>{{item.quantity}}</h6>
+                                                </td>
+                                                <td class="table-quantity">
+                                                    <h6>0</h6>
                                                 </td>
                                             </tr>
                                             {% endfor %}

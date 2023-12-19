@@ -1,12 +1,11 @@
 from typing import Any
-from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-from .models import Cart, CartDetail, Order, OrderDetail
+from .models import Cart, CartDetail, Order
 
 # Create your views here.
  

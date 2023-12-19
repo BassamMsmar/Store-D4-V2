@@ -42,7 +42,7 @@ class CartDetail(models.Model):
 
     def __str__(self):
         if self.cart:
-            return f"cart_detail {self.cart}"
+            return f"{self.product} - cart_detail {self.cart}"
         else:
             return f"Cart (No User)"
         
