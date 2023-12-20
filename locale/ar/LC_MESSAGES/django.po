@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-20 16:35+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\product\models.py:17 .\product\models.py:54
+msgid "Name"
+msgstr "الاسم"
+
+#: .\product\models.py:18
+msgid "Flag"
+msgstr "العلامة"
+
+#: .\product\models.py:19 .\product\models.py:47
+msgid "Image"
+msgstr "الصورة"
+
+#: .\product\models.py:20
+msgid "Price"
+msgstr "السعر"
+
+#: .\product\models.py:21
+msgid "Sku"
+msgstr "الكود"
+
+#: .\product\models.py:22
+msgid "Subtitle"
+msgstr "العنوان الفرعي "
+
+#: .\product\models.py:23
+msgid "Tag"
+msgstr "التاق"
+
+#: .\product\models.py:24
+msgid "Descriptions"
+msgstr "الوصف"
+
+#: .\product\models.py:25
+msgid "Quantity"
+msgstr "الكمية"
+
+#: .\product\models.py:27 .\product\models.py:56
+msgid "Slug"
+msgstr "الرابط المميز"
+
+#: .\product\models.py:28 .\product\models.py:72
+msgid "Create at"
+msgstr "تاريخ الانشاء"
+
+#: .\product\models.py:46 .\product\models.py:69
+msgid "Product"
+msgstr "المنتج"
+
+#: .\product\models.py:55
+msgid "Images"
+msgstr "الصور"
+
+#: .\product\models.py:70
+msgid "Rate"
+msgstr "التقييم"
+
+#: .\product\models.py:71
+msgid "Review"
+msgstr "المراجعه"
+
+#: .\template\base.html:182
+msgid "home"
+msgstr "الرئيسية"
+
+#: .\template\base.html:185
+msgid "products"
+msgstr "المنتجات"
+
+#: .\template\base.html:188
+msgid "brands"
+msgstr "الماركات"
+
+#: .\template\base.html:191
+msgid "admin"
+msgstr "لوحة التحكم"
+
+#: .\template\base.html:194
+msgid "order"
+msgstr "الطلبات"
+
+#~ msgid "rebiew_user"
+#~ msgstr "مراجعة المستخدم"

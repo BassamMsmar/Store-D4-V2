@@ -65,7 +65,7 @@ class Brand(models.Model):
     
 
 class Review(models.Model):
-    user = models.ForeignKey(User, verbose_name=('User'), related_name=_("rebiew_user"), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, verbose_name=('User'), related_name='rebiew_user', on_delete=models.SET_NULL, null=True)
     product = models.ForeignKey(Product, related_name='review_product', verbose_name=_("Product"), on_delete=models.SET_NULL, null=True)
     rate = models.IntegerField(_("Rate"))
     review = models.CharField(_("Review"), max_length=300)
