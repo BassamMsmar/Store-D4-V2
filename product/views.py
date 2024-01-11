@@ -4,6 +4,7 @@ from django.db.models import Count
 from django.db.models.aggregates import Avg
 from django.views.decorators.cache import cache_page
 
+from .tasks import send_emails
 from .models import Product, Brand, Review, ProductImages
 # Create your views here.
 
@@ -71,9 +72,11 @@ class BrandDetail(ListView):
 
 
 
-@cache_page(60 * 15)
+# @cache_page(60 * 1)
 def queryset_debug(request):
     # products = Product.objects.select_related('brand').all()
     data = Product.objects.all()
+
+    send_emails.delay()
 
     return render(request, 'product/debug.html', {'data':data})
