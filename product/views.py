@@ -70,25 +70,8 @@ class BrandDetail(ListView):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def queryset_debug(request):
     # products = Product.objects.select_related('brand').all()
-    products = Product.objects.filter(brand__name='Apple')
+    data = Product.objects.all()
 
-    return render(request, 'product/debug.html', {'products':products})
+    return render(request, 'product/debug.html', {'data':data})
