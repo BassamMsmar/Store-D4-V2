@@ -1,9 +1,8 @@
-from typing import Any
-from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.db.models import Count
 from django.db.models.aggregates import Avg
+from django.views.decorators.cache import cache_page
 
 from .models import Product, Brand, Review, ProductImages
 # Create your views here.
@@ -70,6 +69,9 @@ class BrandDetail(ListView):
 
 
 
+
+
+@cache_page(60 * 15)
 def queryset_debug(request):
     # products = Product.objects.select_related('brand').all()
     data = Product.objects.all()
