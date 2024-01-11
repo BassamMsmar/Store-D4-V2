@@ -22,3 +22,5 @@ services:
       - myredis
       - backend
   
+
+  #docker-compose up --build
