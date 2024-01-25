@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.db.models import Count
 from django.db.models.aggregates import Avg
@@ -80,3 +80,20 @@ def queryset_debug(request):
     send_emails.delay()
 
     return render(request, 'product/debug.html', {'data':data})
+
+
+def add_review(request, slug):
+    product = Product.objects.get(slug=slug)
+
+    rate = request.POST['rate']
+    review = request.POST['review']
+
+    Review.objects.create(
+        product=product,
+        rate=rate,
+        review=review,
+        user=request.user,
+    )
+
+    return redirect(f'/product/{slug}')
+
