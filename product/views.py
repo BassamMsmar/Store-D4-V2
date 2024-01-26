@@ -7,6 +7,8 @@ from django.views.decorators.cache import cache_page
 from .tasks import send_emails
 from .models import Product, Brand, Review, ProductImages
 # Create your views here.
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 
 class ProductList(ListView):
@@ -94,6 +96,11 @@ def add_review(request, slug):
         review=review,
         user=request.user,
     )
+    
+    reviews = Review.objects.filter(product=product)
+    html = render_to_string('product/include/reviews_include.html',{'reviews':reviews})
+    return JsonResponse({'result':html})
 
-    return redirect(f'/product/{slug}')
+
+    # return redirect(f'/product/{slug}')
 
