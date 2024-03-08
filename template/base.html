@@ -151,8 +151,9 @@
                     <img src="{{company_data.logo.url}}" alt="logo">
                 </a>
                 {% if request.user.is_authenticated %}
-                <a href="/" class="header-widget" title="My Account">
-                    <img src="{{ request.user.image.url }}" alt="user">
+                <a href="{% url 'profile' request.user.pk  %}" class="header-widget" title="My Account">
+                    <img src="{{ request.user.profile_user.image.url }}" alt="user">
+                    <span>{{ request.user.username }}</span>
                 </a>
                 {% else %}
                 <a href="/" class="header-widget" title="My Account">

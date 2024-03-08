@@ -160,6 +160,12 @@ INTERNAL_IPS = [
 
 LOCALE_PATHS = ['locale']
 
+
+AUTHENTICATION_BACKENDS = [
+    'accounts.backend.EmailOrUsernameLogin'
+]
+
+
 LANGUAGES = [
     ("ar", ("Arabic")),
     ("en", ("English")),
