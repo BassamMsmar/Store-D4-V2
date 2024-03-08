@@ -150,11 +150,16 @@
                 <a href=" " class="header-logo">
                     <img src="{{company_data.logo.url}}" alt="logo">
                 </a>
-                <a href="login.html" class="header-widget" title="My Account">
-                    <img src="{{request.user.image.url}}" alt="user">
+                {% if request.user.is_authenticated %}
+                <a href="/" class="header-widget" title="My Account">
+                    <img src="{{ request.user.image.url }}" alt="user">
+                </a>
+                {% else %}
+                <a href="/" class="header-widget" title="My Account">
                     <span>join</span>
                 </a>
-
+                {% endif %}
+                
                 <form class="header-form">
                     <input type="text" placeholder="Search anything...">
                     <button><i class="fas fa-search"></i></button>
