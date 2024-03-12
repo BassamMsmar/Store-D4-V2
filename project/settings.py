@@ -165,6 +165,8 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backend.EmailOrUsernameLogin'
 ]
 
+LOGIN_REDIRECT_URL = 'product_list'
+LOGOUT_REDIRECT_URL = 'product_list'
 
 LANGUAGES = [
     ("ar", ("Arabic")),
