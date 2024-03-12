@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.db.models import Count
 from django.db.models.aggregates import Avg
@@ -7,6 +7,8 @@ from django.views.decorators.cache import cache_page
 from .tasks import send_emails
 from .models import Product, Brand, Review, ProductImages
 # Create your views here.
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 
 class ProductList(ListView):
@@ -80,3 +82,25 @@ def queryset_debug(request):
     send_emails.delay()
 
     return render(request, 'product/debug.html', {'data':data})
+
+
+def add_review(request, slug):
+    product = Product.objects.get(slug=slug)
+
+    rate = request.POST['rate']
+    review = request.POST['review']
+
+    Review.objects.create(
+        product=product,
+        rate=rate,
+        review=review,
+        user=request.user,
+    )
+    
+    reviews = Review.objects.filter(product=product)
+    html = render_to_string('product/include/reviews_include.html',{'reviews':reviews})
+    return JsonResponse({'result':html})
+
+
+    # return redirect(f'/product/{slug}')
+
