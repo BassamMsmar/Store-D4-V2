@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'taggit',
     'debug_toolbar',
     'rosetta',
+    "bootstrap5",
    
 
     'settings',
@@ -190,3 +191,6 @@ CACHES = {
 
 CELERY_BROKER_URL='redis://myredis:6379',
 CELERY_RESULT_BACKEND='redis://myredis:6379'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

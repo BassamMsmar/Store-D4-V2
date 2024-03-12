@@ -8,3 +8,6 @@ class Profile(DetailView):
     model = Profile
     template_name = 'accounts/profile.html'
 
+def register(request):
+    return render(request, 'registration/register.html')
+
