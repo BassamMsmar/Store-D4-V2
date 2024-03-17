@@ -18,7 +18,7 @@ def seed_brand(n):
             name = fake.name(),
             image = f'brand/{image[random.randint(0,2)]}'
         )
-    
+
     print(f'seed {n} Brands succssfuly')
 
 

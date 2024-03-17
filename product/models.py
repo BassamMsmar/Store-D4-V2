@@ -6,16 +6,16 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 from django.db.models.aggregates import Avg
 
-FLAG_TYPES = (
-    ('Sale','Sale'),
-    ('New','New'),
-    ('Feature','Feature'),
- )
 
+FLAG_TYPES = (
+    ('sale', 'sale'),
+    ('new', 'new'),
+    ('feature', 'feature'),
+)
 # Create your models here.
 class Product(models.Model):
     name = models.CharField(_("Name"), max_length=120)
-    flag = models.CharField(_("Flag"), choices=FLAG_TYPES, max_length=10)
+    flag = models.CharField(_("Flag"),max_length=10, choices=FLAG_TYPES)    
     image = models.ImageField(_("Image"), upload_to='products')
     price = models.FloatField(_("Price"))
     sku = models.CharField(_("Sku"), max_length=50)
