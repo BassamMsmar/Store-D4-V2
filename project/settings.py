@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'taggit',
     'debug_toolbar',
     'rosetta',
-    "bootstrap5",
-   
+    "django_bootstrap5",   
 
     'settings',
     'product',

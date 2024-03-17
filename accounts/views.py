@@ -11,3 +11,4 @@ class Profile(DetailView):
 def register(request):
     return render(request, 'registration/register.html')
 
+                                                                      
