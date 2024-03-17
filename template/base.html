@@ -142,19 +142,21 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-media-group">
-                    <button class="header-user"><img src="{{request.user.image.url}}" alt="user"></button>
-                    <a href=""><img src="{{company_data.logo.url}}" alt="logo"></a>
+                    <button class="header-user"><img src="images/user.png" alt="user"></button>
+                    <a href="/"><img src="{{ company_data.image.url }}" alt="logo"></a>
                     <button class="header-src"><i class="fas fa-search"></i></button>
                 </div>
 
-                <a href=" " class="header-logo">
-                    <img src="{{company_data.logo.url}}" alt="logo">
+                <a href="/" class="header-logo">
+                    <img src="{{ company_data.logo.url }}" alt="logo">
                 </a>
-                <a href="login.html" class="header-widget" title="My Account">
-                    <img src="{{request.user.image.url}}" alt="user">
+                <!-- <a href="login.html" class="header-widget" title="My Account">
+                    <img src="images/user.png" alt="user">
                     <span>join</span>
-                </a>
+                </a> -->
 
+                
+                
                 <form class="header-form">
                     <input type="text" placeholder="Search anything...">
                     <button><i class="fas fa-search"></i></button>
@@ -169,12 +171,37 @@
                         <i class="fas fa-heart"></i>
                         <sup>0</sup>
                     </a>
+                    {% if request.user.is_authenticated %}
                     <button class="header-widget header-cart" title="Cartlist">
                         <i class="fas fa-shopping-basket"></i>
                         <sup>{{cart_detail_data|length}}</sup>
                         <span>total price<small>${{cart_data.cart_total}}</small></span>
                     </button>
-                </div>
+                    {% endif %}
+
+
+                    {% if request.user.is_authenticated %}
+                    <div class="dropdown">
+                        <div class="dropdown-toggle header-widget" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                           <img src="{{ request.user.profile_user.image.url }}" alt="user">
+                            <span>{{ request.user.username }}</span> 
+                        </div>
+                        <ul class="dropdown-menu">
+                          <li><a href="{% url 'profile' request.user.pk  %}" class="header-widget" title="My Account"> profile </a></li>
+                          <li><a href="{% url 'logout' %}" class="header-widget" title="My Account"> Logout </a></li>
+                          
+                        </ul>
+                    </div>
+                    
+                    
+                        
+                   
+                    {% else %}
+                    <a href="{% url 'login' %}" class="header-widget" title="My Account">
+                        <span>join</span>
+                    </a>
+                    {% endif %}
+                    </div>
             </div>
         </div>
     </header>
