@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
+from django.conf import settings
 
 
 from .forms import SignupForm
@@ -36,7 +37,7 @@ def register(request):
             send_mail(
                 "Activate Your Account",
                 f"Welcome {username} \nUse this code {profile.code} to activate your account",
-                "from@example.com",
+                settings.EMAIL_HOST_USER,
                 [email],
                 fail_silently=False,
             )

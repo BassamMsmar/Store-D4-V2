@@ -192,4 +192,10 @@ CELERY_BROKER_URL='redis://myredis:6379',
 CELERY_RESULT_BACKEND='redis://myredis:6379'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_PASSWORD = "lkqrlncstmhjhdsc"
+EMAIL_HOST_USER = "bassammsmar@gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
