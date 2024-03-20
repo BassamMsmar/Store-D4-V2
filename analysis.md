@@ -25,3 +25,9 @@
 - descriptions
 - related items
 - quantity
+
+
+- run
+    DISABLE_COLLECTSTATIC = 1
+    django-admin makemessages -l ar
+    django-admin compilemessages

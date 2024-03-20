@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-20 16:50+0300\n"
+"POT-Creation-Date: 2024-03-20 14:37+0300\n"
 "PO-Revision-Date: 2023-12-20 16:50+0000\n"
 "Last-Translator:   <adkmin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: .\product\models.py:17 .\product\models.py:54
@@ -79,29 +80,32 @@ msgstr "التقييم"
 msgid "Review"
 msgstr "المراجعه"
 
-#: .\template\base.html:196
+#: .\template\base.html:189
 msgid "home"
 msgstr "الرئيسية"
 
-#: .\template\base.html:199
+#: .\template\base.html:192
+#, fuzzy
+#| msgid "Product"
 msgid "products"
-msgstr "المنتجات"
+msgstr "المنتج"
 
-#: .\template\base.html:202
+#: .\template\base.html:195
 msgid "brands"
 msgstr "الماركات"
 
-#: .\template\base.html:205
+#: .\template\base.html:198
 msgid "admin"
 msgstr "لوحة التحكم"
 
-#: .\template\base.html:208
+#: .\template\base.html:201
+msgid "debug"
+msgstr "تجريب"
+
+#: .\template\base.html:204
 msgid "order"
 msgstr "الطلبات"
 
-#: .\template\base.html:212
+#: .\template\base.html:208
 msgid "roseeta"
 msgstr "الترجمة"
-
-#~ msgid "rebiew_user"
-#~ msgstr "مراجعة المستخدم"
