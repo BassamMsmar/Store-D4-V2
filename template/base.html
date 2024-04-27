@@ -32,7 +32,9 @@
                     CSS LINK PART START
         =======================================-->
     <!-- FAVICON -->
-    <link rel="icon" href="images/favicon.png"> {% if LANGUAGE_CODE == 'en' %}
+    <link rel="icon" href="images/favicon.png">
+    
+    {% if LANGUAGE_CODE == 'en' %}
     <link rel="stylesheet" href="{% static 'en/fonts/flaticon/flaticon.css' %} ">
     <link rel="stylesheet" href="{% static 'en/fonts/icofont/icofont.min.css' %}">
     <link rel="stylesheet" href="{% static 'en/fonts/fontawesome/fontawesome.min.css ' %}">
@@ -40,7 +42,7 @@
     <link rel="stylesheet" href="{% static 'en/vendor/slickslider/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'en/vendor/niceselect/nice-select.min.cs' %}s">
     <link rel="stylesheet" href="{% static 'en/vendor/bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'en/css/main.css' %}"> {% else %}
+    {% else %}
     <link rel="stylesheet" href="{% static 'ar/fonts/flaticon/flaticon.css' %} ">
     <link rel="stylesheet" href="{% static 'ar/fonts/icofont/icofont.min.css' %}">
     <link rel="stylesheet" href="{% static 'ar/fonts/fontawesome/fontawesome.min.css ' %}">
@@ -48,8 +50,13 @@
     <link rel="stylesheet" href="{% static 'ar/vendor/slickslider/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'ar/vendor/niceselect/nice-select.min.cs' %}s">
     <link rel="stylesheet" href="{% static 'ar/vendor/bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'ar/css/main.css' %}"> {% endif %} {% block css%}
-    <link rel="stylesheet" href="{% static 'en/css/index.css'%}"> {% endblock %}
+    {% endif %} 
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'index.css'%}">
+
+    {% block css%}
+    <link rel="stylesheet" href="{% static 'en/css/index.css'%}"> 
+    {% endblock %}
 
     <!--=====================================
                     CSS LINK PART END
