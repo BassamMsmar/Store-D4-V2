@@ -1,15 +1,13 @@
-{% load static %}
-{% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-
+{% load static %} {% load i18n %} {% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="en"  {% if LANGUAGE_CODE == 'ar' %} dir="rtl" {% endif %} >
+<html lang="en" {% if LANGUAGE_CODE == 'ar' %} dir="rtl" {% endif %}>
 
 <head>
     <!--=====================================
                     META TAG PART START
         =======================================-->
+
     <!-- REQUIRE META -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,8 +20,7 @@
     <!-- TEMPLATE META -->
     <meta name="name" content="Greeny">
     <meta name="title" content="Greeny - eCommerce HTML Template">
-    <meta name="keywords"
-        content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, webshop, farm, grocery, natural, online store">
+    <meta name="keywords" content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, webshop, farm, grocery, natural, online store">
     <!--=====================================
                     META-TAG PART END
         =======================================-->
@@ -35,36 +32,24 @@
                     CSS LINK PART START
         =======================================-->
     <!-- FAVICON -->
-    <link rel="icon" href="images/favicon.png">
-
-    {% if LANGUAGE_CODE == 'en' %}
-        <link rel="stylesheet" href="{% static 'en/fonts/flaticon/flaticon.css' %} ">
-        <link rel="stylesheet" href="{% static 'en/fonts/icofont/icofont.min.css' %}">
-        <link rel="stylesheet" href="{% static 'en/fonts/fontawesome/fontawesome.min.css ' %}">
-        <link rel="stylesheet" href="{% static 'en/vendor/venobox/venobox.min.cs' %}s">
-        <link rel="stylesheet" href="{% static 'en/vendor/slickslider/slick.min.css' %}">
-        <link rel="stylesheet" href="{% static 'en/vendor/niceselect/nice-select.min.cs' %}s">
-        <link rel="stylesheet" href="{% static 'en/vendor/bootstrap/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'en/css/main.css' %}">
-    {% else  %}
-        <link rel="stylesheet" href="{% static 'ar/fonts/flaticon/flaticon.css' %} ">
-        <link rel="stylesheet" href="{% static 'ar/fonts/icofont/icofont.min.css' %}">
-        <link rel="stylesheet" href="{% static 'ar/fonts/fontawesome/fontawesome.min.css ' %}">
-        <link rel="stylesheet" href="{% static 'ar/vendor/venobox/venobox.min.cs' %}s">
-        <link rel="stylesheet" href="{% static 'ar/vendor/slickslider/slick.min.css' %}">
-        <link rel="stylesheet" href="{% static 'ar/vendor/niceselect/nice-select.min.cs' %}s">
-        <link rel="stylesheet" href="{% static 'ar/vendor/bootstrap/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'ar/css/main.css' %}">   
-
-    {% endif %}
-    
-    
-    {% block css%}
-        <link rel="stylesheet" href="{% static 'en/css/index.css'%}">
-    {% endblock %}
-
-
-
+    <link rel="icon" href="images/favicon.png"> {% if LANGUAGE_CODE == 'en' %}
+    <link rel="stylesheet" href="{% static 'en/fonts/flaticon/flaticon.css' %} ">
+    <link rel="stylesheet" href="{% static 'en/fonts/icofont/icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'en/fonts/fontawesome/fontawesome.min.css ' %}">
+    <link rel="stylesheet" href="{% static 'en/vendor/venobox/venobox.min.cs' %}s">
+    <link rel="stylesheet" href="{% static 'en/vendor/slickslider/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'en/vendor/niceselect/nice-select.min.cs' %}s">
+    <link rel="stylesheet" href="{% static 'en/vendor/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'en/css/main.css' %}"> {% else %}
+    <link rel="stylesheet" href="{% static 'ar/fonts/flaticon/flaticon.css' %} ">
+    <link rel="stylesheet" href="{% static 'ar/fonts/icofont/icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'ar/fonts/fontawesome/fontawesome.min.css ' %}">
+    <link rel="stylesheet" href="{% static 'ar/vendor/venobox/venobox.min.cs' %}s">
+    <link rel="stylesheet" href="{% static 'ar/vendor/slickslider/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'ar/vendor/niceselect/nice-select.min.cs' %}s">
+    <link rel="stylesheet" href="{% static 'ar/vendor/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'ar/css/main.css' %}"> {% endif %} {% block css%}
+    <link rel="stylesheet" href="{% static 'en/css/index.css'%}"> {% endblock %}
 
     <!--=====================================
                     CSS LINK PART END
@@ -83,15 +68,15 @@
             <div class="row">
                 <div class="col-md-12 col-lg-5">
                     <div class="header-top-welcome">
-                        <p>Welcome to Ecomart in Your Dream Online Store!</p>
+                        <p>Welcome to Ecomart in Your Dream Online Store!
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-3">
                     <div class="header-top-select">
-                        
+                        <div class="header-select">
+                            <i class="icofont-world"></i>
 
-                        
-                        
                             <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                                 <input name="next" type="hidden" value="{{ redirect_to }}">
                                 <select name="language" class="select">
@@ -99,24 +84,14 @@
                                     {% get_available_languages as LANGUAGES %}
                                     {% get_language_info_list for LANGUAGES as languages %}
                                     {% for language in languages %}
-                                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected {% endif %}>
                                             {{ language.name_local }} ({{ language.code }})
                                         </option>
                                     {% endfor %}
                                 </select>
-                                <input type="submit" value="Go">
+                                <input type="submit" value="Go" class="button mx-2 text-light px-2">
                             </form>
-                    
-
-
-                        <!-- <div class="header-select">
-                            <i class="icofont-money"></i>
-                            <select class="select">
-                                <option value="english" selected>doller</option>
-                                <option value="bangali">pound</option>
-                                <option value="arabic">taka</option>
-                            </select>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-7 col-lg-4">
@@ -133,8 +108,6 @@
                     HEADER TOP PART END 
         =======================================-->
 
-
-
     <!--=====================================
                     HEADER PART START
         =======================================-->
@@ -142,17 +115,21 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-media-group">
-                    <button class="header-user"><img src="{{request.user.image.url}}" alt="user"></button>
-                    <a href=""><img src="{{company_data.logo.url}}" alt="logo"></a>
-                    <button class="header-src"><i class="fas fa-search"></i></button>
+                    <button class="header-user"><img src="images/user.png"
+                                alt="user"></button>
+                    <a href="/"><img src="{{ company_data.image.url }}" alt="logo"></a>
+                    <button class="header-src"><i
+                                class="fas fa-search"></i></button>
                 </div>
 
-                <a href=" " class="header-logo">
-                    <img src="{{company_data.logo.url}}" alt="logo">
+                <a href="/" class="header-logo">
+                    <img src="{{ company_data.logo.url }}" alt="logo">
                 </a>
+                <!-- <a href="login.html" class="header-widget" title="My Account">
+                    <img src="images/user.png" alt="user">
+                    <span>join</span>
+                </a> -->
 
-                
-                
                 <form class="header-form">
                     <input type="text" placeholder="Search anything...">
                     <button><i class="fas fa-search"></i></button>
@@ -169,42 +146,35 @@
                     </a>
                     {% if request.user.is_authenticated %}
                     <button class="header-widget header-cart" title="Cartlist">
-                        <i class="fas fa-shopping-basket"></i>
-                        <sup>{{cart_detail_data|length}}</sup>
-                        <span>total price<small>${{cart_data.cart_total}}</small></span>
-                    </button>
-                    {% endif %}
-
-
-                    {% if request.user.is_authenticated %}
+                            <i class="fas fa-shopping-basket"></i>
+                            <sup>{{cart_detail_data|length}}</sup>
+                            <span>total
+                                price<small>${{cart_data.cart_total}}</small></span>
+                        </button> {% endif %} {% if request.user.is_authenticated %}
                     <div class="dropdown">
                         <div class="dropdown-toggle header-widget" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                           <img src="{{ request.user.profile_user.image.url }}" alt="user">
-                            <span>{{ request.user.username }}</span> 
+                            <img src="{{ request.user.profile_user.image.url }}" alt="user">
+                            <span>{{ request.user.username }}</span>
                         </div>
                         <ul class="dropdown-menu">
-                          <li><a href="{% url 'profile' request.user.pk  %}" class="header-widget" title="My Account"> profile </a></li>
-                          <li><a href="{% url 'logout' %}" class="header-widget" title="My Account"> Logout </a></li>
-                          
+                            <li><a href="{% url 'profile' request.user.pk  %}" class="header-widget" title="My Account"> profile </a></li>
+                            <li><a href="{% url 'logout' %}" class="header-widget" title="My Account"> Logout </a></li>
+
                         </ul>
                     </div>
-                    
-                    
-                        
-                   
+
                     {% else %}
                     <a href="{% url 'login' %}" class="header-widget" title="My Account">
                         <span>join</span>
                     </a>
                     {% endif %}
-                    </div>
+                </div>
             </div>
         </div>
     </header>
     <!--=====================================
                     HEADER PART END
         =======================================-->
-
 
     <!--=====================================
                     NAVBAR PART START
@@ -219,7 +189,7 @@
                                 <a class="navbar-link" href="{% url 'home' %}">{% translate "home" %}</a>
                             </li>
                             <li class="navbar-item">
-                                <a class="navbar-link" href="/product">{% translate "products" %}</a>
+                                <a class="navbar-link" href="/product">{%translate "products" %}</a>
                             </li>
                             <li class="navbar-item">
                                 <a class="navbar-link" href="{% url 'brand_list' %}">{% translate "brands" %}</a>
@@ -237,7 +207,7 @@
                             <li class="navbar-item">
                                 <a class="navbar-link" href="rosetta/">{% translate "roseeta" %}</a>
                             </li> -->
-                           
+
                         </ul>
                         <div class="navbar-info-group">
                             <div class="navbar-info">
@@ -264,8 +234,6 @@
                     NAVBAR PART END
         =======================================-->
 
-
-
     <!--=====================================
                 CATEGORY SIDEBAR PART START
         =======================================-->
@@ -275,7 +243,8 @@
                 <i class="fas fa-align-left"></i>
                 <span>categories</span>
             </h4>
-            <button class="category-close"><i class="icofont-close"></i></button>
+            <button class="category-close"><i
+                        class="icofont-close"></i></button>
         </div>
         <ul class="category-list">
             <li class="category-item">
@@ -419,7 +388,6 @@
                 CATEGORY SIDEBAR PART END
         =======================================-->
 
-
     <!--=====================================
                   CART SIDEBAR PART START
         =======================================-->
@@ -429,32 +397,36 @@
                 <i class="fas fa-shopping-basket"></i>
                 <span>total item ({{cart_detail_data|length}})</span>
             </div>
-            <button class="cart-close"><i class="icofont-close"></i></button>
+            <button class="cart-close"><i
+                        class="icofont-close"></i></button>
         </div>
         <ul class="cart-list">
             {% for item in cart_detail_data %}
-                <li class="cart-item">
-                    <div class ="cart-media">
-                        <a href="#"><img src="{{item.product.image.url}}" alt="product"></a>
-                        <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+            <li class="cart-item">
+                <div class="cart-media">
+                    <a href="#"><img src="{{item.product.image.url}}" alt="product"></a>
+                    <button class="cart-delete"><i
+                                class="far fa-trash-alt"></i></button>
+                </div>
+                <div class="cart-info-group">
+                    <div class="cart-info">
+                        <h6><a href="#">{{item.product}}</a></h6>
+                        <p>Unit Price - ${{item.product.price}}</p>
                     </div>
-                    <div class="cart-info-group">
-                        <div class="cart-info">
-                            <h6><a href="#">{{item.product}}</a></h6>
-                            <p>Unit Price - ${{item.product.price}}</p>
+                    <div class="cart-action-group">
+                        <div class="product-action">
+                            <button class="action-minus" title="Quantity Minus"><i
+                                        class="icofont-minus"></i></button>
+                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{item.quantity}}">
+                            <button class="action-plus" title="Quantity Plus"><i
+                                        class="icofont-plus"></i></button>
                         </div>
-                        <div class="cart-action-group">
-                            <div class="product-action">
-                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{item.quantity}}">
-                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                            </div>
-                            <h6>${{item.total}}</h6>
-                        </div>
+                        <h6>${{item.total}}</h6>
                     </div>
-                </li>
+                </div>
+            </li>
             {% endfor %}
-          
+
         </ul>
         <div class="cart-footer">
             <button class="coupon-btn">Do you have a coupon code?</button>
@@ -471,7 +443,6 @@
     <!--=====================================
                     CART SIDEBAR PART END
         =======================================-->
-
 
     <!--=====================================
                   NAV SIDEBAR PART START
@@ -497,51 +468,63 @@
                 <div class="nav-select">
                     <i class="icofont-world"></i>
                     <select class="select">
-                        <option value="english" selected>English</option>
-                        <option value="arabic">Arabic</option>
-                    </select>
+                            <option value="english" selected>English</option>
+                            <option value="arabic">Arabic</option>
+                        </select>
                 </div>
                 <div class="nav-select">
                     <i class="icofont-money"></i>
                     <select class="select">
-                        <option value="english" selected>Doller</option>
-                        <option value="bangali">Pound</option>
-                        <option value="arabic">Taka</option>
-                    </select>
+                            <option value="english" selected>Doller</option>
+                            <option value="bangali">Pound</option>
+                            <option value="arabic">Taka</option>
+                        </select>
                 </div>
             </div>
             <ul class="nav-list">
                 <li>
-                    <a class="nav-link dropdown-link" href="#"><i class="icofont-home"></i>Home</a>
+                    <a class="nav-link dropdown-link" href="#"><i
+                                class="icofont-home"></i>Home</a>
                     <ul class="dropdown-list">
                         <li><a href="home-grid.html">Home grid</a></li>
                         <li><a href=" ">Home index</a></li>
-                        <li><a href="">Home classic</a></li>
-                        <li><a href="">Home standard</a></li>
-                        <li><a href="">Home category</a></li>
+                        <li><a href>Home classic</a></li>
+                        <li><a href>Home standard</a></li>
+                        <li><a href>Home category</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-link dropdown-link" href="#"><i class="icofont-food-cart"></i>shop</a>
+                    <a class="nav-link dropdown-link" href="#"><i
+                                class="icofont-food-cart"></i>shop</a>
                     <ul class="dropdown-list">
-                        <li><a href="shop-5column.html">shop 5 column</a></li>
-                        <li><a href="shop-4column.html">shop 4 column</a></li>
-                        <li><a href="shop-3column.html">shop 3 column</a></li>
-                        <li><a href="shop-2column.html">shop 2 column</a></li>
-                        <li><a href="shop-1column.html">shop 1 column</a></li>
+                        <li><a href="shop-5column.html">shop 5
+                                    column</a></li>
+                        <li><a href="shop-4column.html">shop 4
+                                    column</a></li>
+                        <li><a href="shop-3column.html">shop 3
+                                    column</a></li>
+                        <li><a href="shop-2column.html">shop 2
+                                    column</a></li>
+                        <li><a href="shop-1column.html">shop 1
+                                    column</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-link dropdown-link" href="#"><i class="icofont-page"></i>product</a>
+                    <a class="nav-link dropdown-link" href="#"><i
+                                class="icofont-page"></i>product</a>
                     <ul class="dropdown-list">
                         <li><a href="product-tab.html">product tab</a></li>
-                        <li><a href="product-grid.html">product grid</a></li>
-                        <li><a href="product-video.html">product video</a></li>
-                        <li><a href="product-simple.html">product simple</a></li>
+                        <li><a href="product-grid.html">product
+                                    grid</a></li>
+                        <li><a href="product-video.html">product
+                                    video</a></li>
+                        <li><a href="product-simple.html">product
+                                    simple</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-link dropdown-link" href="#"><i class="icofont-bag-alt"></i>my account</a>
+                    <a class="nav-link dropdown-link" href="#"><i
+                                class="icofont-bag-alt"></i>my account</a>
                     <ul class="dropdown-list">
                         <li><a href="profile.html">profile</a></li>
                         <li><a href="wallet.html">wallet</a></li>
@@ -550,35 +533,53 @@
                         <li><a href="checkout.html">checkout</a></li>
                         <li><a href="orderlist.html">order history</a></li>
                         <li><a href="invoice.html">order invoice</a></li>
-                        <li><a href="email-template.html">email template</a></li>
+                        <li><a href="email-template.html">email
+                                    template</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-link dropdown-link" href="#"><i class="icofont-lock"></i>authentication</a>
+                    <a class="nav-link dropdown-link" href="#"><i
+                                class="icofont-lock"></i>authentication</a>
                     <ul class="dropdown-list">
                         <li><a href="login.html">login</a></li>
                         <li><a href="register.html">register</a></li>
-                        <li><a href="reset-password.html">reset password</a></li>
-                        <li><a href="change-password.html">change password</a></li>
+                        <li><a href="reset-password.html">reset
+                                    password</a></li>
+                        <li><a href="change-password.html">change
+                                    password</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-link dropdown-link" href="#"><i class="icofont-book-alt"></i>blogs</a>
+                    <a class="nav-link dropdown-link" href="#"><i
+                                class="icofont-book-alt"></i>blogs</a>
                     <ul class="dropdown-list">
                         <li><a href="blog-grid.html">blog grid</a></li>
-                        <li><a href="blog-standard.html">blog standard</a></li>
-                        <li><a href="blog-details.html">blog details</a></li>
+                        <li><a href="blog-standard.html">blog
+                                    standard</a></li>
+                        <li><a href="blog-details.html">blog
+                                    details</a></li>
                         <li><a href="blog-author.html">blog author</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link" href="offer.html"><i class="icofont-sale-discount"></i>offers</a></li>
-                <li><a class="nav-link" href="about.html"><i class="icofont-info-circle"></i>about us</a></li>
-                <li><a class="nav-link" href="faq.html"><i class="icofont-support-faq"></i>need help</a></li>
-                <li><a class="nav-link" href="contact.html"><i class="icofont-contacts"></i>contact us</a></li>
-                <li><a class="nav-link" href="privacy.html"><i class="icofont-warning"></i>privacy policy</a></li>
-                <li><a class="nav-link" href="coming-soon.html"><i class="icofont-options"></i>coming soon</a></li>
-                <li><a class="nav-link" href="error.html"><i class="icofont-ui-block"></i>404 error</a></li>
-                <li><a class="nav-link" href="login.html"><i class="icofont-logout"></i>logout</a></li>
+                <li><a class="nav-link" href="offer.html"><i
+                                class="icofont-sale-discount"></i>offers</a></li>
+                <li><a class="nav-link" href="about.html"><i
+                                class="icofont-info-circle"></i>about
+                            us</a></li>
+                <li><a class="nav-link" href="faq.html"><i
+                                class="icofont-support-faq"></i>need
+                            help</a></li>
+                <li><a class="nav-link" href="contact.html"><i
+                                class="icofont-contacts"></i>contact us</a></li>
+                <li><a class="nav-link" href="privacy.html"><i
+                                class="icofont-warning"></i>privacy
+                            policy</a></li>
+                <li><a class="nav-link" href="coming-soon.html"><i
+                                class="icofont-options"></i>coming soon</a></li>
+                <li><a class="nav-link" href="error.html"><i
+                                class="icofont-ui-block"></i>404 error</a></li>
+                <li><a class="nav-link" href="login.html"><i
+                                class="icofont-logout"></i>logout</a></li>
             </ul>
             <div class="nav-info-group">
                 <div class="nav-info">
@@ -605,7 +606,6 @@
                   NAV SIDEBAR PART END
         =======================================-->
 
-
     <!--=====================================
                     MOBILE-MENU PART START
         =======================================-->
@@ -615,14 +615,14 @@
             <span>Home</span>
         </a>
         <button class="cate-btn" title="Category List">
-            <i class="fas fa-list"></i>
-            <span>category</span>
-        </button>
+                <i class="fas fa-list"></i>
+                <span>category</span>
+            </button>
         <button class="cart-btn" title="Cartlist">
-            <i class="fas fa-shopping-basket"></i>
-            <span>cartlist</span>
-            <sup>9+</sup>
-        </button>
+                <i class="fas fa-shopping-basket"></i>
+                <span>cartlist</span>
+                <sup>9+</sup>
+            </button>
         <a href="wishlist.html" title="Wishlist">
             <i class="fas fa-heart"></i>
             <span>wishlist</span>
@@ -637,7 +637,6 @@
     <!--=====================================
                     MOBILE-MENU PART END
         =======================================-->
-
 
     <!--=====================================
                     PRODUCT VIEW START
@@ -677,7 +676,8 @@
                         <div class="col-md-6 col-lg-6">
                             <div class="view-details">
                                 <h3 class="view-name">
-                                    <a href="product-video.html">existing product name</a>
+                                    <a href="product-video.html">existing
+                                            product name</a>
                                 </h3>
                                 <div class="view-meta">
                                     <p>SKU:<span>1234567</span></p>
@@ -689,15 +689,15 @@
                                     <i class="active icofont-star"></i>
                                     <i class="active icofont-star"></i>
                                     <i class="icofont-star"></i>
-                                    <a href="product-video.html">(3 reviews)</a>
+                                    <a href="product-video.html">(3
+                                            reviews)</a>
                                 </div>
                                 <h3 class="view-price">
                                     <del>$38.00</del>
-                                    <span>$24.00<small>/per kilo</small></span>
+                                    <span>$24.00<small>/per
+                                                kilo</small></span>
                                 </h3>
-                                <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora
-                                    magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos
-                                    reprehenderit fuga</p>
+                                <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
                                 <div class="view-list-group">
                                     <label class="view-list-title">tags:</label>
                                     <ul class="view-tag-list">
@@ -709,24 +709,32 @@
                                 <div class="view-list-group">
                                     <label class="view-list-title">Share:</label>
                                     <ul class="view-share-list">
-                                        <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
-                                        <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
-                                        <li><a href="#" class="icofont-linkedin" title="Linkedin"></a></li>
-                                        <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
+                                        <li>
+                                            <a href="#" class="icofont-facebook" title="Facebook"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="icofont-twitter" title="Twitter"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="icofont-linkedin" title="Linkedin"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="icofont-instagram" title="Instagram"></a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="view-add-group">
                                     <button class="product-add" title="Add to Cart">
-                                        <i class="fas fa-shopping-basket"></i>
-                                        <span>add to cart</span>
-                                    </button>
+                                            <i
+                                                class="fas fa-shopping-basket"></i>
+                                            <span>add to cart</span>
+                                        </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i
-                                                class="icofont-minus"></i></button>
-                                        <input class="action-input" title="Quantity Number" type="text" name="quantity"
-                                            value="1">
+                                                    class="icofont-minus"></i></button>
+                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
                                         <button class="action-plus" title="Quantity Plus"><i
-                                                class="icofont-plus"></i></button>
+                                                    class="icofont-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="view-action-group">
@@ -750,10 +758,7 @@
                     PRODUCT VIEW END
         =======================================-->
 
-
-    {% block body %}
-    {% endblock %}
-
+    {% block body %} {% endblock %}
 
     <!--=====================================
                     INTRO PART START
@@ -768,7 +773,8 @@
                         </div>
                         <div class="intro-content">
                             <h5>free home delivery</h5>
-                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -779,7 +785,8 @@
                         </div>
                         <div class="intro-content">
                             <h5>instant return policy</h5>
-                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -790,7 +797,8 @@
                         </div>
                         <div class="intro-content">
                             <h5>quick support system</h5>
-                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -801,7 +809,8 @@
                         </div>
                         <div class="intro-content">
                             <h5>secure payment way</h5>
-                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -811,7 +820,6 @@
     <!--=====================================
                     INTRO PART END
         =======================================-->
-
 
     <!--=====================================
                      FOOTER PART START
@@ -824,14 +832,24 @@
                         <a class="footer-logo" href="#">
                             <img src="{{company_data.logo.url}}" alt="logo">
                         </a>
-                        <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam
-                            assumenda dolor perspiciatis sit ipsum dolor amet.</p>
+                        <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam assumenda dolor perspiciatis sit ipsum dolor amet.
+                        </p>
                         <ul class="footer-social">
-                            <li><a class="icofont-facebook" href="#"></a></li>
-                            <li><a class="icofont-twitter" href="#"></a></li>
-                            <li><a class="icofont-linkedin" href="#"></a></li>
-                            <li><a class="icofont-instagram" href="#"></a></li>
-                            <li><a class="icofont-pinterest" href="#"></a></li>
+                            <li>
+                                <a class="icofont-facebook" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="icofont-twitter" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="icofont-linkedin" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="icofont-instagram" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="icofont-pinterest" href="#"></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -884,8 +902,8 @@
                 <div class="col-sm-6 col-xl-3">
                     <div class="footer-widget">
                         <h3 class="footer-title">Download App</h3>
-                        <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem
-                            obcaecati minus ducimus totam reprehenderit exercitationem!</p>
+                        <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem obcaecati minus ducimus totam reprehenderit exercitationem!
+                        </p>
                         <div class="footer-app">
                             <a href="#"><img src="images/google-store.png" alt="google"></a>
                             <a href="#"><img src="images/app-store.png" alt="app"></a>
@@ -896,8 +914,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="footer-bottom">
-                        <p class="footer-copytext">&copy; All Copyrights Reserved by <a target="_blank"
-                                href="https://themeforest.net/user/mironcoder">Mironcoder</a></p>
+                        <p class="footer-copytext">&copy; All Copyrights Reserved by <a target="_blank" href="https://themeforest.net/user/mironcoder">Mironcoder</a></p>
                         <div class="footer-card">
                             <a href="#"><img src="images/payment/jpg/01.jpg" alt="payment"></a>
                             <a href="#"><img src="images/payment/jpg/02.jpg" alt="payment"></a>
@@ -913,39 +930,38 @@
                       FOOTER PART END
         =======================================-->
 
-
     <!--=====================================
                     JS LINK PART START
         =======================================-->
-   
+
     {% if LANGUAGE_CODE == 'en' %}
-        <script src="{% static 'en/vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
-        <script src="{% static 'en/vendor/bootstrap/popper.min.js' %}"></script>
-        <script src="{% static 'en/vendor/bootstrap/bootstrap.min.js' %}"></script>
-        <script src="{% static 'en/vendor/countdown/countdown.min.js' %}"></script>
-        <script src="{% static 'en/vendor/niceselect/nice-select.min.js' %}"></script>
-        <script src="{% static 'en/vendor/slickslider/slick.min.j' %}s"></script>
-        <script src="{% static 'en/vendor/venobox/venobox.min.js' %}"></script>
-        <script src="{% static 'en/js/nice-select.js' %}"></script>
-        <script src="{% static 'en/js/countdown.j' %}s"></script>
-        <script src="{% static 'en/js/accordion.js' %}"></script>
-        <script src="{% static 'en/js/venobox.js' %}"></script>
-        <script src="{% static 'en/js/slick.js' %}"></script>
-        <script src="{% static 'en/js/main.js' %}"></script>
+    <script src="{% static 'en/vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'en/vendor/bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'en/vendor/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'en/vendor/countdown/countdown.min.js' %}"></script>
+    <script src="{% static 'en/vendor/niceselect/nice-select.min.js' %}"></script>
+    <script src="{% static 'en/vendor/slickslider/slick.min.j' %}s"></script>
+    <script src="{% static 'en/vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'en/js/nice-select.js' %}"></script>
+    <script src="{% static 'en/js/countdown.j' %}s"></script>
+    <script src="{% static 'en/js/accordion.js' %}"></script>
+    <script src="{% static 'en/js/venobox.js' %}"></script>
+    <script src="{% static 'en/js/slick.js' %}"></script>
+    <script src="{% static 'en/js/main.js' %}"></script>
     {% else %}
-        <script src="{% static 'ar/vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
-        <script src="{% static 'ar/vendor/bootstrap/popper.min.js' %}"></script>
-        <script src="{% static 'ar/vendor/bootstrap/bootstrap.min.js' %}"></script>
-        <script src="{% static 'ar/vendor/countdown/countdown.min.js' %}"></script>
-        <script src="{% static 'ar/vendor/niceselect/nice-select.min.js' %}"></script>
-        <script src="{% static 'ar/vendor/slickslider/slick.min.j' %}s"></script>
-        <script src="{% static 'ar/vendor/venobox/venobox.min.js' %}"></script>
-        <script src="{% static 'ar/js/nice-select.js' %}"></script>
-        <script src="{% static 'ar/js/countdown.j' %}s"></script>
-        <script src="{% static 'ar/js/accordion.js' %}"></script>
-        <script src="{% static 'ar/js/venobox.js' %}"></script>
-        <script src="{% static 'ar/js/slick.js' %}"></script>
-        <script src="{% static 'ar/js/main.js' %}"></script>
+    <script src="{% static 'ar/vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'ar/vendor/bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'ar/vendor/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'ar/vendor/countdown/countdown.min.js' %}"></script>
+    <script src="{% static 'ar/vendor/niceselect/nice-select.min.js' %}"></script>
+    <script src="{% static 'ar/vendor/slickslider/slick.min.j' %}s"></script>
+    <script src="{% static 'ar/vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'ar/js/nice-select.js' %}"></script>
+    <script src="{% static 'ar/js/countdown.j' %}s"></script>
+    <script src="{% static 'ar/js/accordion.js' %}"></script>
+    <script src="{% static 'ar/js/venobox.js' %}"></script>
+    <script src="{% static 'ar/js/slick.js' %}"></script>
+    <script src="{% static 'ar/js/main.js' %}"></script>
     {% endif %}
 
     <!--=====================================

@@ -13,8 +13,12 @@ colorama==0.4.6
 dj-database-url==2.1.0
 Django==4.2.6
 django-bootstrap-v5==1.0.11
+<<<<<<< HEAD
 django-bootstrap5==24.2
 django-cors-headers==4.3.1
+=======
+django-bootstrap5==23.4
+>>>>>>> 53ed92237f47e8e5b0f7bcac5a64314cbb01f508
 django-debug-toolbar==4.2.0
 django-filter==23.5
 django-heroku==0.3.1

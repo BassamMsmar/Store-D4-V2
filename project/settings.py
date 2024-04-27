@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'taggit',
     'debug_toolbar',
     'rosetta',
-    "bootstrap5",
-   
+    "django_bootstrap5",   
 
     'settings',
     'product',
@@ -79,7 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.contrib.messages.context_processors.messages',
+                'settings.company_context_processor.get_company_data',
                 'orders.cart_context_processor.get_or_create_cart',
                 'settings.company_context_processor.get_company_data',
                 
@@ -193,4 +192,10 @@ CELERY_BROKER_URL='redis://myredis:6379',
 CELERY_RESULT_BACKEND='redis://myredis:6379'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_PASSWORD = "lkqrlncstmhjhdsc"
+EMAIL_HOST_USER = "bassammsmar@gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
