@@ -104,3 +104,14 @@ def add_review(request, slug):
 
     # return redirect(f'/product/{slug}')
 
+    # def products_list_by_category(request, pk):
+    #     products = Product.objects.filter(categories=pk)
+    #     return render(request, 'product/product_list.html', {'product_list':products})
+
+class ProductListByCategory(ListView):
+    model = Product
+
+    def get_queryset(self ):
+        pk = self.kwargs['pk']
+        queryset = Product.objects.filter(categories=pk)
+        return queryset

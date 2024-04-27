@@ -42,6 +42,8 @@
     <link rel="stylesheet" href="{% static 'en/vendor/slickslider/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'en/vendor/niceselect/nice-select.min.cs' %}s">
     <link rel="stylesheet" href="{% static 'en/vendor/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'en/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'en/css/index.css'%}">
     {% else %}
     <link rel="stylesheet" href="{% static 'ar/fonts/flaticon/flaticon.css' %} ">
     <link rel="stylesheet" href="{% static 'ar/fonts/icofont/icofont.min.css' %}">
@@ -50,6 +52,8 @@
     <link rel="stylesheet" href="{% static 'ar/vendor/slickslider/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'ar/vendor/niceselect/nice-select.min.cs' %}s">
     <link rel="stylesheet" href="{% static 'ar/vendor/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'ar/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'ar/css/index.css'%}">
     {% endif %} 
     <link rel="stylesheet" href="{% static 'main.css' %}">
     <link rel="stylesheet" href="{% static 'index.css'%}">
@@ -122,9 +126,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-media-group">
-                    <button class="header-user"><img src="images/user.png"
-                                alt="user"></button>
-                    <a href="/"><img src="{{ company_data.image.url }}" alt="logo"></a>
+                    <button class="header-user"><img src="{{ request.user.image.url }}"
+                                alt="user1"></button>
+                    <a href="/"><img src="{{ company_data.logo.url }}" alt="logo1"></a>
                     <button class="header-src"><i
                                 class="fas fa-search"></i></button>
                 </div>
@@ -196,7 +200,7 @@
                                 <a class="navbar-link" href="{% url 'home' %}">{% translate "home" %}</a>
                             </li>
                             <li class="navbar-item">
-                                <a class="navbar-link" href="/product">{%translate "products" %}</a>
+                                <a class="navbar-link" href="/product">{% translate "products" %}</a>
                             </li>
                             <li class="navbar-item">
                                 <a class="navbar-link" href="{% url 'brand_list' %}">{% translate "brands" %}</a>
@@ -220,14 +224,14 @@
                             <div class="navbar-info">
                                 <i class="icofont-ui-touch-phone"></i>
                                 <p>
-                                    <small>call us</small>
+                                    <small>{% translate "call us" %}</small>
                                     <span>{{company_data.phone}}</span>
                                 </p>
                             </div>
                             <div class="navbar-info">
                                 <i class="icofont-ui-email"></i>
                                 <p>
-                                    <small>email us</small>
+                                    <small>{% translate "email us" %}</small>
                                     <span>{{company_data.email}}</span>
                                 </p>
                             </div>
@@ -248,7 +252,7 @@
         <div class="category-header">
             <h4 class="category-title">
                 <i class="fas fa-align-left"></i>
-                <span>categories</span>
+                <span>{% translate "categories" %}</span>
             </h4>
             <button class="category-close"><i
                         class="icofont-close"></i></button>
@@ -257,23 +261,23 @@
             <li class="category-item">
                 <a class="category-link dropdown-link" href="#">
                     <i class="flaticon-vegetable"></i>
-                    <span>vegetables</span>
+                    <span>{% translate "vegetables" %}</span>
                 </a>
                 <ul class="dropdown-list">
-                    <li><a href="#">asparagus</a></li>
-                    <li><a href="#">broccoli</a></li>
-                    <li><a href="#">carrot</a></li>
+                    <li><a href="#">{% translate "asparagus" %}</a></li>
+                    <li><a href="#">{% translate "broccoli" %}</a></li>
+                    <li><a href="#">{% translate "carrot" %}</a></li>
                 </ul>
             </li>
             <li class="category-item">
                 <a class="category-link dropdown-link" href="#">
                     <i class="flaticon-groceries"></i>
-                    <span>groceries</span>
+                    <span>{% translate "groceries" %}</span>
                 </a>
                 <ul class="dropdown-list">
-                    <li><a href="#">Grains & Bread</a></li>
-                    <li><a href="#">Dairy & Eggs</a></li>
-                    <li><a href="#">Oil & Fat</a></li>
+                    <li><a href="#">{% translate "Grains & Bread" %}</a></li>
+                    <li><a href="#">{% translate "Dairy & Eggs" %}</a></li>
+                    <li><a href="#">{% translate "Oil & Fat" %}</a></li>
                 </ul>
             </li>
             <li class="category-item">

@@ -1730,7 +1730,7 @@ tbody tr td:last-child {
 }
 
 .suggest-card:hover::before {
-  background: rgba(17, 151, 68, 0.9);
+  background: #7822004d;
 }
 
 .suggest-card img {

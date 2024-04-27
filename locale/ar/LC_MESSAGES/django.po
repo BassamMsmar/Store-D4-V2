@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 14:37+0300\n"
+"POT-Creation-Date: 2024-04-27 11:19+0300\n"
 "PO-Revision-Date: 2023-12-20 16:50+0000\n"
 "Last-Translator:   <adkmin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,32 +80,30 @@ msgstr "التقييم"
 msgid "Review"
 msgstr "المراجعه"
 
-#: .\template\base.html:189
+#: .\template\base.html:196
 msgid "home"
 msgstr "الرئيسية"
 
-#: .\template\base.html:192
-#, fuzzy
-#| msgid "Product"
+#: .\template\base.html:199
 msgid "products"
 msgstr "المنتج"
 
-#: .\template\base.html:195
+#: .\template\base.html:202
 msgid "brands"
 msgstr "الماركات"
 
-#: .\template\base.html:198
+#: .\template\base.html:205
 msgid "admin"
 msgstr "لوحة التحكم"
 
-#: .\template\base.html:201
+#: .\template\base.html:208
 msgid "debug"
 msgstr "تجريب"
 
-#: .\template\base.html:204
+#: .\template\base.html:211
 msgid "order"
 msgstr "الطلبات"
 
-#: .\template\base.html:208
+#: .\template\base.html:215
 msgid "roseeta"
 msgstr "الترجمة"

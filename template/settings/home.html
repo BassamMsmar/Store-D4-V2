@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %} 
+{% get_current_language as LANGUAGE_CODE %}
 {% load static %}
 {% block css%}
 <link rel="stylesheet" href="{% static 'en/css/index.css'%}">
@@ -73,11 +75,11 @@
         <section class="section suggest-part">
             <div class="container">
                 <ul class="suggest-slider slider-arrow">
-                   {% for brand in brands  %}
-                        <li>
-                            <a class="suggest-card" href="products/brands/{{brand.slug}}">
-                                <img src="{{brand.image.url}}" style="width:223px; height:194px;" alt="suggest">
-                                <h5>{{brand}} <span>{{brand.brand_count}} items</span></h5>
+                   {% for categorie in categories  %}
+                        <li >
+                            <a class="suggest-card" href="{% url 'products_list_by_category' categorie.id %}">
+                                <img src="{{categorie.image.url}}" style="width:223px; height:194px;" alt="suggest">
+                                <h5>{{categorie}} <span>{{categorie.brand_count}} items</span></h5>
                             </a>
                         </li>
                    {% endfor %}
@@ -97,12 +99,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-heading">
-                            <h2>recently sold items</h2>
+                            <h2>{% translate "recently sold items" %}</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-                    {% for item in sale_products  %}
+                    {% for item in products  %}
                         <div class="col">
                             <div class="product-card">
                                 <div class="product-media">

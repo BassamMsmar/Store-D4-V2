@@ -18,12 +18,12 @@ class Product(models.Model):
     flag = models.CharField(_("Flag"),max_length=10, choices=FLAG_TYPES)    
     image = models.ImageField(_("Image"), upload_to='products')
     price = models.FloatField(_("Price"))
-    sku = models.CharField(_("Sku"), max_length=50)
-    subtitle = models.CharField(_("Subtitle"), max_length=300)
-    tag = TaggableManager(_("Tag"))
-    descriptions = models.TextField(_("Descriptions"), max_length=40000)
+    sku = models.CharField(_("Sku"), max_length=50, null=True, blank=True)
+    subtitle = models.CharField(_("Subtitle"), max_length=300, null=True, blank=True)
+    descriptions = models.TextField(_("Descriptions"), max_length=40000, null=True, blank=True)
     quantity = models.IntegerField(_("Quantity"))
-    brand = models.ForeignKey("Brand", verbose_name=('Brand'), related_name='product_brand', on_delete=models.SET_NULL, null=True)
+    brand = models.ForeignKey("Brand", verbose_name=('Brand'), related_name='product_brand', on_delete=models.SET_NULL, null=True, blank=True)
+    categories = models.ForeignKey("Categories", verbose_name=('Categories'), related_name='product_categories', on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(_("Slug"), null=True, blank=True)
     create_at = models.DateTimeField(_("Create at"), default=timezone.now, null=True, blank=True)
 
@@ -62,6 +62,15 @@ class Brand(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Brand, self).save(*args, **kwargs)
+
+
+class Categories(models.Model):
+    name = models.CharField(_("Name"), max_length=50)
+    image = models.ImageField(_("Images"), upload_to='categories')
+
+
+    def __str__(self) -> str:
+            return self.name
     
 
 class Review(models.Model):

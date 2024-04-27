@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ProductList, ProductDetail, BrandList, BrandDetail, queryset_debug, add_review
+from .views import ProductList, ProductDetail, BrandList, BrandDetail, queryset_debug, add_review, ProductListByCategory
 
 
 urlpatterns = [
@@ -11,5 +11,7 @@ urlpatterns = [
 
     path('brands/', BrandList.as_view(), name='brand_list'), 
     path('brands/<slug:slug>', BrandDetail.as_view(), name='brand_details'), 
+
+    path('categories/<int:pk>', ProductListByCategory.as_view(), name='products_list_by_category'), 
 
 ]
