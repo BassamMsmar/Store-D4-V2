@@ -4,6 +4,7 @@ from django.db import models
 class Company(models.Model):
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='company')
+    sublogo = models.ImageField(upload_to='company' , null=True, blank=True)
     subtitle = models.TextField(max_length=500)
     facebool_link = models.URLField(max_length=200, null=True, blank=True)
     twitter_link = models.URLField(max_length=200, null=True, blank=True)
