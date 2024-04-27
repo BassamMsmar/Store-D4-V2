@@ -79,7 +79,7 @@
                         <li >
                             <a class="suggest-card" href="{% url 'products_list_by_category' categorie.id %}">
                                 <img src="{{categorie.image.url}}" style="width:223px; height:194px;" alt="suggest">
-                                <h5>{{categorie}} <span>{{categorie.brand_count}} items</span></h5>
+                                <h5>{{categorie}} <span>{{categorie.categories_count}} {% translate "items" %}</span></h5>
                             </a>
                         </li>
                    {% endfor %}

@@ -5,7 +5,7 @@ from django.db.models.aggregates import Avg
 from django.views.decorators.cache import cache_page
 
 from .tasks import send_emails
-from .models import Product, Brand, Review, ProductImages
+from .models import Product, Brand, Review, ProductImages, Categories
 # Create your views here.
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -110,8 +110,11 @@ def add_review(request, slug):
 
 class ProductListByCategory(ListView):
     model = Product
+    
 
     def get_queryset(self ):
         pk = self.kwargs['pk']
         queryset = Product.objects.filter(categories=pk)
+
         return queryset
+    
