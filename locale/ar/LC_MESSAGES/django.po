@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 11:19+0300\n"
+"POT-Creation-Date: 2024-04-27 18:47+0300\n"
 "PO-Revision-Date: 2023-12-20 16:50+0000\n"
 "Last-Translator:   <adkmin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: .\product\models.py:17 .\product\models.py:54
+#: .\product\models.py:17 .\product\models.py:54 .\product\models.py:68
 msgid "Name"
 msgstr "الاسم"
 
@@ -45,14 +45,10 @@ msgid "Subtitle"
 msgstr "العنوان الفرعي "
 
 #: .\product\models.py:23
-msgid "Tag"
-msgstr "التاق"
-
-#: .\product\models.py:24
 msgid "Descriptions"
 msgstr "الوصف"
 
-#: .\product\models.py:25
+#: .\product\models.py:24
 msgid "Quantity"
 msgstr "الكمية"
 
@@ -60,50 +56,105 @@ msgstr "الكمية"
 msgid "Slug"
 msgstr "الرابط المميز"
 
-#: .\product\models.py:28 .\product\models.py:72
+#: .\product\models.py:28 .\product\models.py:81
 msgid "Create at"
 msgstr "تاريخ الانشاء"
 
-#: .\product\models.py:46 .\product\models.py:69
+#: .\product\models.py:46 .\product\models.py:78
 msgid "Product"
 msgstr "المنتج"
 
-#: .\product\models.py:55
+#: .\product\models.py:55 .\product\models.py:69
 msgid "Images"
 msgstr "الصور"
 
-#: .\product\models.py:70
+#: .\product\models.py:79
 msgid "Rate"
 msgstr "التقييم"
 
-#: .\product\models.py:71
+#: .\product\models.py:80
 msgid "Review"
 msgstr "المراجعه"
 
-#: .\template\base.html:196
+#: .\template\base.html:200
 msgid "home"
 msgstr "الرئيسية"
 
-#: .\template\base.html:199
+#: .\template\base.html:203
 msgid "products"
-msgstr "المنتج"
+msgstr "المنتجات"
 
-#: .\template\base.html:202
+#: .\template\base.html:206
 msgid "brands"
 msgstr "الماركات"
 
-#: .\template\base.html:205
+#: .\template\base.html:209
 msgid "admin"
 msgstr "لوحة التحكم"
 
-#: .\template\base.html:208
+#: .\template\base.html:212
 msgid "debug"
 msgstr "تجريب"
 
-#: .\template\base.html:211
+#: .\template\base.html:215
 msgid "order"
 msgstr "الطلبات"
 
-#: .\template\base.html:215
+#: .\template\base.html:219
 msgid "roseeta"
 msgstr "الترجمة"
+
+#: .\template\base.html:227
+msgid "call us"
+msgstr "اتصل بنا"
+
+#: .\template\base.html:234
+msgid "email us"
+msgstr "راسلنا"
+
+#: .\template\base.html:255
+msgid "categories"
+msgstr "الفئات"
+
+#: .\template\base.html:264
+msgid "vegetables"
+msgstr "الخضار"
+
+#: .\template\base.html:267
+msgid "asparagus"
+msgstr "نباتات"
+
+#: .\template\base.html:268
+msgid "broccoli"
+msgstr "بروكلي"
+
+#: .\template\base.html:269
+msgid "carrot"
+msgstr "جزر"
+
+#: .\template\base.html:275
+msgid "groceries"
+msgstr "ملفوف"
+
+#: .\template\base.html:278
+msgid "Grains & Bread"
+msgstr "الحبوب و الخبز"
+
+#: .\template\base.html:279
+msgid "Dairy & Eggs"
+msgstr "الألبان والبيض"
+
+#: .\template\base.html:280
+msgid "Oil & Fat"
+msgstr "الزيت و المعجنات"
+
+#: .\template\settings\home.html:82
+msgid "items"
+msgstr "عناصر"
+
+#: .\template\settings\home.html:102
+msgid "recently sold items"
+msgstr "المضافة مؤخراً"
+
+#~ msgid "Tag"
+#~ msgstr "التاق"

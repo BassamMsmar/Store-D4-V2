@@ -30,6 +30,8 @@ class Product(models.Model):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+        print(self.name)
+        print(self.slug)
         super(Product, self).save(*args, **kwargs)
 
     # def ave_rate(self):

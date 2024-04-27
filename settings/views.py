@@ -11,7 +11,7 @@ def home(request):
        categories = Categories.objects.all().annotate(categories_count=Count('product_categories'))
        sale_products = Product.objects.filter(flag='sale')[:10] 
        feature_products = Product.objects.filter(flag='feature')[:5]
-       new_products = Product.objects.filter(flag='new')[:6] 
+       new_products = Product.objects.filter(flag='new')[:10] 
        reviwes = Review.objects.all()[:10] 
 
 
