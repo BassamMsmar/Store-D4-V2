@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
 from django.db.models.aggregates import Avg
+from unidecode import unidecode
+
 
 
 FLAG_TYPES = (
@@ -29,7 +31,7 @@ class Product(models.Model):
 
     
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(unidecode(self.name))
         print(self.name)
         print(self.slug)
         super(Product, self).save(*args, **kwargs)

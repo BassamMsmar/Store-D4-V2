@@ -169,8 +169,8 @@ LOGIN_REDIRECT_URL = 'product_list'
 LOGOUT_REDIRECT_URL = 'product_list'
 
 LANGUAGES = [
-    ("ar", ("Arabic")),
-    ("en", ("English")),
+    ('en', 'English'),
+    ('ar', 'Arabic'),
 ]
     
 
