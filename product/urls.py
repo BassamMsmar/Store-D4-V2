@@ -4,8 +4,8 @@ from .views import ProductList, ProductDetail, BrandList, BrandDetail, queryset_
 
 urlpatterns = [
     path('', ProductList.as_view(), name='product_list'),
-    path('<slug:slug>', ProductDetail.as_view(), name='product_detail'),
-    path('<slug:slug>/add_review', add_review, name='add_review'),
+    path('<str:slug>', ProductDetail.as_view(), name='product_detail'),
+    path('<str:slug>/add_review', add_review, name='add_review'),
 
     path('debug/', queryset_debug, name='queryset_debug'),
 

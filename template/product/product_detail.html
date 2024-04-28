@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+ {% get_current_language as LANGUAGE_CODE %}
 {% block css%}
 <link rel="stylesheet" href="{% static 'en/css/product-details.css'%}">
 {% endblock %}
@@ -10,12 +12,12 @@
         <!--=====================================
                     BANNER PART START
         =======================================-->
-        <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <!-- <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
             <div class="container">
                 <h2>product simple</h2>
                
             </div>
-        </section>
+        </section> -->
         <!--=====================================
                     BANNER PART END
         =======================================-->
@@ -24,7 +26,7 @@
         <!--=====================================
                 PRODUCT DETAILS PART START
         =======================================-->
-        <section class="inner-section">
+        <section class="inner-section my-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -35,6 +37,7 @@
                             </div>
                             <ul class="details-preview"> 
                                 <!-- <li><img src="{{object.image.url}}" alt="product"></li> -->
+                                <li><img src="{{object.image.url}}" alt="product"></li>
                                 {% for image in object.product_image.all %}
                                 <li><img src="{{image.image.url}}" alt="product"></li>
                                 {% endfor %}
@@ -52,6 +55,16 @@
                     </div>
                     <div class="col-lg-6">
                         <ul class="product-navigation">
+                            <li class="product-nav-next">
+                                <a href="#">
+                                    {% translate "next product" %}
+                                    <i class="icofont-arrow-right"></i>
+                                    <span class="product-nav-popup">
+                                        <img src="images/product/03.jpg" alt="product">
+                                        <small>{% translate "green chilis" %}</small>
+                                    </span>
+                                </a>
+                            </li>
                             <li class="product-nav-prev">
                                 <a href="#">
                                     <i class="icofont-arrow-left"></i>
@@ -62,56 +75,57 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="product-nav-next">
-                                <a href="#">
-                                    next product
-                                    <i class="icofont-arrow-right"></i>
-                                    <span class="product-nav-popup">
-                                        <img src="images/product/03.jpg" alt="product">
-                                        <small>green chilis</small>
-                                    </span>
-                                </a>
-                            </li>
                         </ul>
                         <div class="details-content">
                             <h3 class="details-name"><a href="#">{{object.name}}</a></h3>
                             <div class="details-meta">
-                                <p>SKU:<span>{{object.sku}}</span></p>
-                                <p>BRAND:<a href="#">{{object.brand}}</a></p>
+                                {% if object.sku %}
+                                <p>:{% translate "SKU" %}<span>{{object.sku}}</span></p>
+                                {% endif %}
+
+                                {% if object.brand %}
+                                <p>:{% translate "BRAND" %}<a href="#">{{object.brand}}</a></p>
+                                {% endif %}
                             </div>
                             <div class="details-rating">
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="icofont-star"></i>
-                                <a href="#">({{product_reviews}} reviews)</a>
+                                <div class="product-rating">
+                                    <i class="icofont-star {% if product.ave_rate > 0 %}active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.ave_rate > 1 %}active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.ave_rate > 2 %}active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.ave_rate > 3 %}active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.ave_rate > 4 %}active {% endif %}"></i>
+                                    <a href="#">({{product.ave_rate}})</a>
+                                </div>
                             </div>
                             <h3 class="details-price">
-                                <span>${{object.price}}</span>
+                                <span>{{object.price}}  {% translate "SAR" %}</span>
                             </h3>
                             <p class="details-desc">{{object.descriptions}}</p>
+                            {% if object.tag %}
                             <div class="details-list-group">
-                                <label class="details-list-title">tags:</label>
+                                <label class="details-list-title">{% translate "tags" %}:</label>
                                 <ul class="details-tag-list">
                                     {% for tag in object.tag.all %}
                                         <li><a href="#">{{tag}}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>
+                            {% endif %}
+
                             <div class="details-list-group">
-                                <label class="details-list-title">Share:</label>
+                                
                                 <ul class="details-share-list">
                                     <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
                                     <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
                                     <li><a href="#" class="icofont-linkedin" title="Linkedin"></a></li>
                                     <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
                                 </ul>
+                                <label class="details-list-title">{% translate "Share" %} : </label>
                             </div>
                             <div class="details-add-group">
                                 <button class="product-add" title="Add to Cart">
                                     <i class="fas fa-shopping-basket"></i>
-                                    <span>add to cart</span>
+                                    <span>{% translate "add to cart" %}</span>
                                 </button>
                                 <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -122,11 +136,11 @@
                             <div class="details-action-group">
                                 <a class="details-wish wish" href="#" title="Add Your Wishlist">
                                     <i class="icofont-heart"></i>
-                                    <span>add to wish</span>
+                                    <span>{% translate "add to wish" %}</span>
                                 </a>
                                 <a class="details-compare" href="compare.html" title="Compare This Item">
                                     <i class="fas fa-random"></i>
-                                    <span>Compare This</span>
+                                    <span>{% translate "Compare This" %}</span>
                                 </a>
                             </div>
                         </div>
@@ -147,7 +161,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="product-details-frame">
-                            <h3 class="frame-title">Description</h3>
+                            <h3 class="frame-title">{% translate "Description" %}</h3>
                             <div class="tab-descrip">
                                 <p>{{object.descriptions}}</p>
                             </div>
@@ -160,7 +174,7 @@
                         
 
                         <div class="product-details-frame">
-                            <h3 class="frame-title">add your review</h3>
+                            <h3 class="frame-title">{% translate "add your review" %}</h3>
                             <form id="review-form" class="review-form" method="POST", action="{% url 'add_review' object.slug %}">
                                 <div class="row">
                                     {% csrf_token %}
@@ -181,7 +195,7 @@
                                     <div class="col-lg-12">
                                         <button class="btn btn-inline">
                                             <i class="icofont-water-drop"></i>
-                                            <span>drop your review</span>
+                                            <span>{% translate "drop your review" %}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -204,7 +218,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="section-heading">
-                            <h2>related this items</h2>
+                            <h2>{% translate "related this items" %}</h2>
                         </div>
                     </div>
                 </div>
@@ -286,6 +300,7 @@
                             $('#all-reviews').html(response['result'])
                             $('#review-form').triger('reset');
                         },
+   
                         error: function () {
                         }
                     })

@@ -944,6 +944,7 @@
                                         <div class="product-action">
                                             <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
                                             <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                            <a href="#"> go to </a>
                                             <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                         </div>
                                     </div>
@@ -1136,7 +1137,7 @@
                                     <a href="product-video.html">(3)</a>
                                 </div>
                                 <h6 class="product-name">
-                                    <a href="product-video.html">fresh green chilis</a>
+                                    <a href="product-video.html">fresh green chilis 10</a>
                                 </h6>
                                 <h6 class="product-price">
                                     <del>$34</del>
@@ -1148,9 +1149,16 @@
                                 </button>
                                 <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                  
+                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1" readonly style="cursor: pointer;" onclick="location.href='{% url 'cart' %}';" >
+
                                     <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                 </div>
+                                
+                                
+                                
+                                    
+
                             </div>
                         </div>
                     </div>

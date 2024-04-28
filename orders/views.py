@@ -26,6 +26,10 @@ def checkout(request):
     cart = Cart.objects.get(user=request.user, status='InProgress')
     cart_detail = CartDetail.objects.filter(cart=cart)
 
+    if request.method == 'POST':
+        pass
+
+
     context = {'cart':cart,
                'cart_detail':cart_detail}
 
