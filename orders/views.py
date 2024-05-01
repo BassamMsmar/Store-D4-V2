@@ -1,8 +1,10 @@
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from product.models import Product
 
 
 from .models import Cart, CartDetail, Order
@@ -19,7 +21,20 @@ class OrderList(LoginRequiredMixin, ListView):
         queryset = super().get_queryset().filter(user=self.request.user)
         return queryset
 
+def add_to_cart(request, pk):
+    product = Product.objects.get(pk=pk)
+    cart, created = Cart.objects.get_or_create(user=request.user, status='InProgress')
 
+    cart_detail, created = CartDetail.objects.get_or_create(cart=cart, product=product)
+    cart_detail.quantity += 1
+    cart_detail.total = cart_detail.quantity * cart_detail.product.price
+
+    return redirect(f'/product/{product.slug}')
+
+def delete_from_cart(request, pk):
+    cart_detail = CartDetail.objects.get(pk=pk)
+    cart_detail.delete()
+    return redirect('/product')
 
 @login_required
 def checkout(request):
