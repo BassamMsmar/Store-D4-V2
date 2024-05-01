@@ -124,25 +124,27 @@
                             </div>
                             <div class="details-add-group">
                                 <button class="product-add" title="Add to Cart">
-                                    <i class="fas fa-shopping-basket"></i>
-                                    <span>{% translate "add to cart" %}</span>
+                                    <a href="{% url 'orders:add_to_cart' pk=object.id %}" class="text-decoration-none link-light">
+                                        <i class="fas fa-shopping-basket"></i>
+                                        <span>{% translate "add to cart" %}</span>
+                                    </a>
+                                    
                                 </button>
-                                <div class="product-action">
+                                
+                                <!-- <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
                                     <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                    <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+0                                   <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                </div> -->
+                                
+                                <div class="details-action-group my-2">
+                                    <a class="details-wish wish" href="#" title="Add Your Wishlist">
+                                        <i class="icofont-heart"></i>
+                                        <span>{% translate "add to wish" %}</span>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="details-action-group">
-                                <a class="details-wish wish" href="#" title="Add Your Wishlist">
-                                    <i class="icofont-heart"></i>
-                                    <span>{% translate "add to wish" %}</span>
-                                </a>
-                                <a class="details-compare" href="compare.html" title="Compare This Item">
-                                    <i class="fas fa-random"></i>
-                                    <span>{% translate "Compare This" %}</span>
-                                </a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

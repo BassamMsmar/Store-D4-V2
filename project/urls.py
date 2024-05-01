@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('settings.urls')),
     path('accounts/', include('accounts.urls')),
     path('product/', include('product.urls')),
-    path('order/', include('orders.urls')),
+    path('order/', include('orders.urls', namespace='order')),
     path('rosetta/', include('rosetta.urls')),
 
     path("__debug__/", include("debug_toolbar.urls")),

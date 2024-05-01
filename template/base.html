@@ -419,9 +419,9 @@
             {% for item in cart_detail_data %}
             <li class="cart-item">
                 <div class="cart-media">
-                    <a href="#"><img src="{{item.product.image.url}}" alt="product"></a>
-                    <button class="cart-delete"><i
-                                class="far fa-trash-alt"></i></button>
+                    <a href="{% url 'orders:delete_from_cart' item.id%}"><img src="{{item.product.image.url}}" alt="product">
+                        <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+                    </a>
                 </div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -787,8 +787,8 @@
                             <i class="fas fa-truck"></i>
                         </div>
                         <div class="intro-content">
-                            <h5>free home delivery</h5>
-                            <p>Lorem ipsum dolor sit amet adipisicing elit nobis.
+                            <h5>شحن مجاني داخل السعودية</h5>
+                            <p>لطلبات فوق 200  رس.
                             </p>
                         </div>
                     </div>
