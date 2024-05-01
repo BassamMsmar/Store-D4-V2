@@ -68,7 +68,7 @@ class Order(models.Model):
     order_time = models.DateTimeField(default=timezone.now)
     delivery_time = models.DateTimeField(null=True, blank=True)
     coupon = models.ForeignKey('Coupon', related_name='order_coupon', on_delete=models.SET_NULL, null=True, blank=True)
-    total_after_coupon = models.FloatField(null=True, blank=True )
+    total_after_coupon = models.FloatField(null=True, blank=True ) 
 
     def __str__(self):
             return f'{self.user}'

@@ -153,13 +153,20 @@
                         <i class="fas fa-heart"></i>
                         <sup>0</sup>
                     </a>
-                    {% if request.user.is_authenticated %}
+                    {% if cart_detail_data|length == 0 %}
                     <button class="header-widget header-cart" title="Cartlist">
-                            <i class="fas fa-shopping-basket"></i>
-                            <sup>{{cart_detail_data|length}}</sup>
-                            <span>total
-                                price<small>${{cart_data.cart_total}}</small></span>
-                        </button> {% endif %} {% if request.user.is_authenticated %}
+                        <sup>0</sup>
+                        <span>total price<small>$0</small></span>
+                        <i class="fas fa-shopping-basket"></i>
+                    </button>
+                    {% else %}
+                    <button class="header-widget header-cart" title="Cartlist">
+                        <sup>{{cart_detail_data|length}}</sup>
+                        <span>total price<small>${{cart_data.cart_total}}</small></span>
+                        <i class="fas fa-shopping-basket"></i>
+                    </button>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
                     <div class="dropdown">
                         <div class="dropdown-toggle header-widget" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ request.user.profile_user.image.url }}" alt="user">
@@ -171,7 +178,6 @@
 
                         </ul>
                     </div>
-
                     {% else %}
                     <a href="{% url 'login' %}" class="header-widget" title="My Account">
                         <span>join</span>
