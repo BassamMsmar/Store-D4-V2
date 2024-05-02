@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.db.models.aggregates import Avg
+from taggit.serializers import (TagListSerializerField,
+                                TaggitSerializer)
 
 from .models import Product, Brand, Categories, Review
 
@@ -17,11 +19,12 @@ class CategoriesListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProductListSerializer(serializers.ModelSerializer):
+class ProductListSerializer(TaggitSerializer, serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField()
     reviews_count = serializers.SerializerMethodField()
     brand = serializers.StringRelatedField()
     categories = serializers.StringRelatedField()
+    tags = TagListSerializerField()
 
     class Meta: 
         model = Product
@@ -42,12 +45,14 @@ class ReviewProductSerializer(serializers.ModelSerializer):
         model = Review
         fields = '__all__'
 
-class ProductDetailsSerializer(serializers.ModelSerializer):
+class ProductDetailsSerializer(TaggitSerializer, serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField()
     reviews_count = serializers.SerializerMethodField()
     brand = serializers.StringRelatedField()
     categories = serializers.StringRelatedField()
     review_product = ReviewProductSerializer(many=True)
+    tags = TagListSerializerField()
+
 
     class Meta: 
         model = Product

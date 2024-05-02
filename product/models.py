@@ -28,7 +28,7 @@ class Product(models.Model):
     categories = models.ForeignKey("Categories", verbose_name=('Categories'), related_name='product_categories', on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(_("Slug"), null=True, blank=True)
     create_at = models.DateTimeField(_("Create at"), default=timezone.now, null=True, blank=True)
-
+    tags = TaggableManager()
     
     def save(self, *args, **kwargs):
         self.slug = slugify(unidecode(self.name))
