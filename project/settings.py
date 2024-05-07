@@ -46,6 +46,12 @@ INSTALLED_APPS = [
     'rosetta',
     "django_bootstrap5",   
     'django_filters',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
 
     'settings',
     'product',
@@ -62,6 +68,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
@@ -164,7 +171,8 @@ LOCALE_PATHS = ['locale']
 
 
 AUTHENTICATION_BACKENDS = [
-    'accounts.backend.EmailOrUsernameLogin'
+    'accounts.backend.EmailOrUsernameLogin',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 LOGIN_REDIRECT_URL = 'product_list'
@@ -181,17 +189,18 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # django_heroku.settings(locals())
 
+SITE_ID = 1
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://myredis:6379",
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.redis.RedisCache",
+#         "LOCATION": "redis://myredis:6379",
+#     }
+# }
 
 
-CELERY_BROKER_URL='redis://myredis:6379',
-CELERY_RESULT_BACKEND='redis://myredis:6379'
+# CELERY_BROKER_URL='redis://myredis:6379',
+# CELERY_RESULT_BACKEND='redis://myredis:6379'
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -204,8 +213,17 @@ EMAIL_USE_SSL = False
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 100
+    'PAGE_SIZE': 20
 }
 
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+REST_AUTH = {
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': 'jwt-auth',
+}
