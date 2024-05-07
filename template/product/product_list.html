@@ -5,11 +5,11 @@
 <!--=====================================
                     BANNER PART START
         =======================================-->
-<section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
+<!-- <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>Shop 4 Column</h2>
     </div>
-</section>
+</section> -->
 <!--=====================================
                     BANNER PART END
         =======================================-->
@@ -394,16 +394,25 @@
                                 </h6>
                                 <button class="product-add" title="Add to Cart">
                                     <i class="fas fa-shopping-basket"></i>
-                                    <span>add</span>
+                                    <span class="mx-2">add</span>
                                 </button>
                                 <div class="product-action">
+                                    <form action="{% url 'order:add_to_cart' product.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                        <input type="hidden" name="product_id" id="{{product.id}}">
+                                        <button class="action-btn" type="submit">add to cart</button>
+                                    </form>
+                                </div>
+                                
+                                <!-- <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus"><i
                                             class="icofont-minus"></i></button>
                                     <input class="action-input" title="Quantity Number" type="text" name="quantity"
                                         value="1">
                                     <button class="action-plus" title="Quantity Plus"><i
                                             class="icofont-plus"></i></button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

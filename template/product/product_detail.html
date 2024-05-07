@@ -124,7 +124,7 @@
                             </div>
                             <div class="details-add-group">
                                 <button class="product-add" title="Add to Cart">
-                                    <a href="{% url 'orders:add_to_cart' pk=object.id %}" class="text-decoration-none link-light">
+                                    <a href="{% url 'order:add_to_cart' pk=object.id %}" class="text-decoration-none link-light">
                                         <i class="fas fa-shopping-basket"></i>
                                         <span>{% translate "add to cart" %}</span>
                                     </a>

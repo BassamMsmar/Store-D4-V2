@@ -48,7 +48,7 @@ class CartDetail(models.Model):
         
 
     def save(self, *args, **kwargs):
-        self.total = self.product.price * self.quantity
+        self.total = int(self.product.price) * int(self.quantity)
         super(CartDetail, self).save(*args, **kwargs)
 
 
