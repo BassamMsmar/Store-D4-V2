@@ -1,9 +1,16 @@
-from rest_framework import generics 
-from .models import Cart, CartDetail, Order, OrderDetail
-from .serializers import CartSerializer
+from rest_framework import generics
+from rest_framework.response import Response
+from django.contrib.auth.models import User
+from .serializers import CartDetailSerializer, CartSerializer
 
 
 
-class CartListApi(generics.ListCreateAPIView):
-    queryset = Cart.objects.all()
-    serializer_class = CartSerializer
+from .models import Cart , CartDetail , Order , OrderDetail
+
+class CartCreateUpdateDelete(generics.GenericAPIView):
+
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(username=self.kwargs['username'])
+        cart, created = Cart.objects.get_or_create(user=user, status='InProgress')
+        date = CartSerializer(cart).data
+        return Response(date)
