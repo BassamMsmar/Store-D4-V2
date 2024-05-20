@@ -3,24 +3,19 @@ from .models import Cart , CartDetail , Order , OrderDetail
 
 
 class CartDetailSerializer(serializers.ModelSerializer):
+    product = serializers.StringRelatedField()
     class Meta:
         model = CartDetail
-        fields = '__all__'
+        fields = '__all__' 
         
         
 class CartSerializer(serializers.ModelSerializer):
     cart_detail = CartDetailSerializer(many=True)
-    name = serializers.SerializerMethodField()
-    age = serializers.SerializerMethodField()
     class Meta:
         model = Cart
         fields = '__all__'
 
-    def get_name(self, obj):
-        return 'bassam'
-
-    def get_age(self, obj):
-        return 22
+ 
         
         
 
