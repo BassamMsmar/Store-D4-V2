@@ -23,14 +23,11 @@ class OrderList(LoginRequiredMixin, ListView):
 
 def add_to_cart(request, pk):
     quantity = request.POST['quantity']
-    print (pk)
-    print (quantity)
     product = Product.objects.get(pk=pk)
     cart, created = Cart.objects.get_or_create(user=request.user, status='InProgress')
 
     cart_detail, created = CartDetail.objects.get_or_create(cart=cart, product=product)
     cart_detail.quantity = quantity
-    print (quantity)
     cart_detail.total =round(int(quantity) * cart_detail.product.price, 2) 
     cart_detail.save()
 
