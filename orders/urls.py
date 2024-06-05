@@ -12,5 +12,5 @@ urlpatterns = [
 
 
     #api
-    path('cart/api/', CartListApi.as_view(), name='cart_api'),
+    path('api/cart/', CartListApi.as_view(), name='cart_api'),
 ]

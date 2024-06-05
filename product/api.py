@@ -10,7 +10,7 @@ from .models import Product, Review, Brand, Categories
 
 
 
-class ProductListApi(generics.ListCreateAPIView):
+class ProductListApi(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductListSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter,filters.OrderingFilter]
@@ -18,12 +18,20 @@ class ProductListApi(generics.ListCreateAPIView):
     search_fields = ['name']
     ordering_fields = ['create_at']
     pagination_class = MyPagination
-    permission_classes = [IsAuthenticated]
+    
 
 
 class ProductDetailApi(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductDetailsSerializer
+
+
+class ProductCreateApi(generics.GenericAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductDetailsSerializer
+
+    def post(self, request, *args, **kwargs):
+        print ("post")
 
 
 class BrandListApi(generics.ListCreateAPIView):
